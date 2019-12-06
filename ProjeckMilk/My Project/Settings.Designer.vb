@@ -97,16 +97,6 @@ Namespace My
                 Return CType(Me("PLDBapptsConnectionString"),String)
             End Get
         End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=ToothImageDB;Integrated Security=True")>  _
-        Public ReadOnly Property ToothImageDBConnectionString() As String
-            Get
-                Return CType(Me("ToothImageDBConnectionString"),String)
-            End Get
-        End Property
     End Class
 End Namespace
 

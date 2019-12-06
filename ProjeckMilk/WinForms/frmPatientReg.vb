@@ -1,15 +1,13 @@
 ﻿Public Class frmPatientReg
     Dim firstName, lastName, middleName, address, occupation, maritalStat, contact As String
     Dim bDate As VariantType
-    Dim pDBset As New ToothImageDBDataSet()
-    Dim pDB As New ToothImageDBDataSetTableAdapters.PatientDBTableAdapter()
+    Dim pDBset As New PLDBDataSet()
+    Dim pDB As New PLDBDataSetTableAdapters.patientDBTableAdapter()
     Private Sub frmPatientReg_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'ToothImageDBDataSet.PatientDB' table. You can move, or remove it, as needed.
         'TODO: This line of code loads data into the 'PLDBDataSet.patientDB' table. You can move, or remove it, as needed.
         Try
-            Me.PatientDBTableAdapterSQL.Fill(Me.ToothImageDBDataSet.PatientDB)
-            'Me.PatientDBTableAdapter.Fill(Me.PLDBDataSet.patientDB)
-            Me.pDB.Fill(Me.pDBset.PatientDB)
+            Me.PatientDBTableAdapter.Fill(Me.PLDBDataSet.patientDB)
+            Me.pDB.Fill(Me.pDBset.patientDB)
         Catch ex As Exception
             MsgBox("Cannot access database file. Please check if the Access 2010 Database Engine is installed.", vbCritical, "Database Error")
             End
@@ -37,7 +35,7 @@
             Try
                 Me.Validate()
                 Me.pDB.Insert(lastName, firstName, middleName, lastName + ", " + firstName + " " + middleName, address, contact, dtpRegBDay.Value.ToShortDateString, occupation, maritalStat)
-                Me.PatientDBTableAdapterSQL.Update(Me.pDBset.patientDB)
+                Me.PatientDBTableAdapter.Update(Me.pDBset.patientDB)
                 MsgBox("Registration Successful!", vbInformation, "Patient Registration")
                 frmPatientCard.Close()
                 Me.Close()
@@ -76,9 +74,9 @@
                 frmPatientSearch.DataGridView1.CurrentRow.Cells(9).Value = maritalStat
                 frmPatientSearch.ValidateChildren()
                 frmPatientSearch.DataGridView1.EndEdit()
-                frmPatientSearch.PatientDBTableAdapterSQL.Update(frmPatientSearch.ToothImageDBDataSet.PatientDB)
+                frmPatientSearch.PatientDBTableAdapter.Update(frmPatientSearch.PLDBDataSet.patientDB)
                 MsgBox("Editing Information is Successful!", vbInformation, "Edit Information")
-                frmPatientSearch.PatientDBTableAdapterSQL.Fill(frmPatientSearch.ToothImageDBDataSet.PatientDB)
+                frmPatientSearch.PatientDBTableAdapter.Fill(frmPatientSearch.PLDBDataSet.patientDB)
                 frmPatientCard.Close()
                 Me.Close()
             Catch ex As Exception

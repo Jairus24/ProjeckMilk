@@ -30,22 +30,21 @@ Partial Class frmLogin
         Me.lblLoginPass = New System.Windows.Forms.Label()
         Me.txtLoginUN = New System.Windows.Forms.TextBox()
         Me.txtLoginPass = New System.Windows.Forms.TextBox()
+        Me.PLDBDataSet = New ProjeckMilk.PLDBDataSet()
+        Me.AdminDBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AdminDBTableAdapter = New ProjeckMilk.PLDBDataSetTableAdapters.adminDBTableAdapter()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.AdminIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AUsernameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.APasswordDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AdminDBBindingSourceSQL = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ToothImageDBDataSet = New ProjeckMilk.ToothImageDBDataSet()
+        Me.UsernameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PasswordDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.lblLogInNote = New System.Windows.Forms.Label()
         Me.lblNote1 = New System.Windows.Forms.Label()
         Me.lblNote2 = New System.Windows.Forms.Label()
         Me.btnConfirm = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
-        Me.AdminDBTableAdapterSQL = New ProjeckMilk.ToothImageDBDataSetTableAdapters.AdminDBTableAdapter()
+        CType(Me.PLDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AdminDBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AdminDBBindingSourceSQL, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ToothImageDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnLoginOK
@@ -108,14 +107,28 @@ Partial Class frmLogin
         Me.txtLoginPass.TabIndex = 2
         Me.txtLoginPass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'PLDBDataSet
+        '
+        Me.PLDBDataSet.DataSetName = "PLDBDataSet"
+        Me.PLDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'AdminDBBindingSource
+        '
+        Me.AdminDBBindingSource.DataMember = "adminDB"
+        Me.AdminDBBindingSource.DataSource = Me.PLDBDataSet
+        '
+        'AdminDBTableAdapter
+        '
+        Me.AdminDBTableAdapter.ClearBeforeFill = True
+        '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AdminIDDataGridViewTextBoxColumn, Me.AUsernameDataGridViewTextBoxColumn, Me.APasswordDataGridViewTextBoxColumn})
-        Me.DataGridView1.DataSource = Me.AdminDBBindingSourceSQL
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.UsernameDataGridViewTextBoxColumn, Me.PasswordDataGridViewTextBoxColumn})
+        Me.DataGridView1.DataSource = Me.AdminDBBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(14, 111)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
@@ -123,36 +136,19 @@ Partial Class frmLogin
         Me.DataGridView1.TabIndex = 6
         Me.DataGridView1.Visible = False
         '
-        'AdminIDDataGridViewTextBoxColumn
+        'UsernameDataGridViewTextBoxColumn
         '
-        Me.AdminIDDataGridViewTextBoxColumn.DataPropertyName = "AdminID"
-        Me.AdminIDDataGridViewTextBoxColumn.HeaderText = "AdminID"
-        Me.AdminIDDataGridViewTextBoxColumn.Name = "AdminIDDataGridViewTextBoxColumn"
-        Me.AdminIDDataGridViewTextBoxColumn.ReadOnly = True
+        Me.UsernameDataGridViewTextBoxColumn.DataPropertyName = "username"
+        Me.UsernameDataGridViewTextBoxColumn.HeaderText = "username"
+        Me.UsernameDataGridViewTextBoxColumn.Name = "UsernameDataGridViewTextBoxColumn"
+        Me.UsernameDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'AUsernameDataGridViewTextBoxColumn
+        'PasswordDataGridViewTextBoxColumn
         '
-        Me.AUsernameDataGridViewTextBoxColumn.DataPropertyName = "AUsername"
-        Me.AUsernameDataGridViewTextBoxColumn.HeaderText = "AUsername"
-        Me.AUsernameDataGridViewTextBoxColumn.Name = "AUsernameDataGridViewTextBoxColumn"
-        Me.AUsernameDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'APasswordDataGridViewTextBoxColumn
-        '
-        Me.APasswordDataGridViewTextBoxColumn.DataPropertyName = "APassword"
-        Me.APasswordDataGridViewTextBoxColumn.HeaderText = "APassword"
-        Me.APasswordDataGridViewTextBoxColumn.Name = "APasswordDataGridViewTextBoxColumn"
-        Me.APasswordDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'AdminDBBindingSourceSQL
-        '
-        Me.AdminDBBindingSourceSQL.DataMember = "AdminDB"
-        Me.AdminDBBindingSourceSQL.DataSource = Me.ToothImageDBDataSet
-        '
-        'ToothImageDBDataSet
-        '
-        Me.ToothImageDBDataSet.DataSetName = "ToothImageDBDataSet"
-        Me.ToothImageDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.PasswordDataGridViewTextBoxColumn.DataPropertyName = "password"
+        Me.PasswordDataGridViewTextBoxColumn.HeaderText = "password"
+        Me.PasswordDataGridViewTextBoxColumn.Name = "PasswordDataGridViewTextBoxColumn"
+        Me.PasswordDataGridViewTextBoxColumn.ReadOnly = True
         '
         'lblLogInNote
         '
@@ -205,10 +201,6 @@ Partial Class frmLogin
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
-        'AdminDBTableAdapterSQL
-        '
-        Me.AdminDBTableAdapterSQL.ClearBeforeFill = True
-        '
         'frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -235,9 +227,9 @@ Partial Class frmLogin
         Me.Name = "frmLogin"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Administrator Login"
+        CType(Me.PLDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AdminDBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AdminDBBindingSourceSQL, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ToothImageDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -248,17 +240,17 @@ Partial Class frmLogin
     Friend WithEvents lblLoginPass As System.Windows.Forms.Label
     Friend WithEvents txtLoginUN As System.Windows.Forms.TextBox
     Friend WithEvents txtLoginPass As System.Windows.Forms.TextBox
+    Friend WithEvents PLDBDataSet As ProjeckMilk.PLDBDataSet
+    Friend WithEvents AdminDBBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents AdminDBTableAdapter As ProjeckMilk.PLDBDataSetTableAdapters.adminDBTableAdapter
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents UsernameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PasswordDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents lblLogInNote As System.Windows.Forms.Label
     Friend WithEvents lblNote1 As System.Windows.Forms.Label
     Friend WithEvents lblNote2 As System.Windows.Forms.Label
     Friend WithEvents btnConfirm As System.Windows.Forms.Button
     Friend WithEvents btnCancel As System.Windows.Forms.Button
-    Friend WithEvents ToothImageDBDataSet As ToothImageDBDataSet
-    Friend WithEvents AdminDBBindingSourceSQL As BindingSource
-    Friend WithEvents AdminDBTableAdapterSQL As ToothImageDBDataSetTableAdapters.AdminDBTableAdapter
-    Friend WithEvents AdminIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents AUsernameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents APasswordDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+
 End Class

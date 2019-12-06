@@ -25,11 +25,11 @@ Partial Class frmAdminArea
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAdminArea))
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.AdminIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AUsernameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.APasswordDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AdminDBBindingSourceSQL = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ToothImageDBDataSet = New ProjeckMilk.ToothImageDBDataSet()
+        Me.UsernameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PasswordDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AdminDBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PLDBDataSet = New ProjeckMilk.PLDBDataSet()
+        Me.AdminDBTableAdapter = New ProjeckMilk.PLDBDataSetTableAdapters.adminDBTableAdapter()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.tpAdminChange = New System.Windows.Forms.TabPage()
         Me.gbAdminChange = New System.Windows.Forms.GroupBox()
@@ -48,11 +48,9 @@ Partial Class frmAdminArea
         Me.lblLocation = New System.Windows.Forms.Label()
         Me.btnAdminDB = New System.Windows.Forms.Button()
         Me.tcAdminChange = New System.Windows.Forms.TabControl()
-        Me.AdminDBTableAdapterSQL = New ProjeckMilk.ToothImageDBDataSetTableAdapters.AdminDBTableAdapter()
-        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AdminDBBindingSourceSQL, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ToothImageDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AdminDBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PLDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tpAdminChange.SuspendLayout()
         Me.gbAdminChange.SuspendLayout()
         Me.tbAdminDB.SuspendLayout()
@@ -64,42 +62,39 @@ Partial Class frmAdminArea
         '
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AdminIDDataGridViewTextBoxColumn, Me.AUsernameDataGridViewTextBoxColumn, Me.APasswordDataGridViewTextBoxColumn})
-        Me.DataGridView1.DataSource = Me.AdminDBBindingSourceSQL
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.UsernameDataGridViewTextBoxColumn, Me.PasswordDataGridViewTextBoxColumn})
+        Me.DataGridView1.DataSource = Me.AdminDBBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(15, 303)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(64, 22)
         Me.DataGridView1.TabIndex = 2
         Me.DataGridView1.Visible = False
         '
-        'AdminIDDataGridViewTextBoxColumn
+        'UsernameDataGridViewTextBoxColumn
         '
-        Me.AdminIDDataGridViewTextBoxColumn.DataPropertyName = "AdminID"
-        Me.AdminIDDataGridViewTextBoxColumn.HeaderText = "AdminID"
-        Me.AdminIDDataGridViewTextBoxColumn.Name = "AdminIDDataGridViewTextBoxColumn"
-        Me.AdminIDDataGridViewTextBoxColumn.ReadOnly = True
+        Me.UsernameDataGridViewTextBoxColumn.DataPropertyName = "username"
+        Me.UsernameDataGridViewTextBoxColumn.HeaderText = "username"
+        Me.UsernameDataGridViewTextBoxColumn.Name = "UsernameDataGridViewTextBoxColumn"
         '
-        'AUsernameDataGridViewTextBoxColumn
+        'PasswordDataGridViewTextBoxColumn
         '
-        Me.AUsernameDataGridViewTextBoxColumn.DataPropertyName = "AUsername"
-        Me.AUsernameDataGridViewTextBoxColumn.HeaderText = "AUsername"
-        Me.AUsernameDataGridViewTextBoxColumn.Name = "AUsernameDataGridViewTextBoxColumn"
+        Me.PasswordDataGridViewTextBoxColumn.DataPropertyName = "password"
+        Me.PasswordDataGridViewTextBoxColumn.HeaderText = "password"
+        Me.PasswordDataGridViewTextBoxColumn.Name = "PasswordDataGridViewTextBoxColumn"
         '
-        'APasswordDataGridViewTextBoxColumn
+        'AdminDBBindingSource
         '
-        Me.APasswordDataGridViewTextBoxColumn.DataPropertyName = "APassword"
-        Me.APasswordDataGridViewTextBoxColumn.HeaderText = "APassword"
-        Me.APasswordDataGridViewTextBoxColumn.Name = "APasswordDataGridViewTextBoxColumn"
+        Me.AdminDBBindingSource.DataMember = "adminDB"
+        Me.AdminDBBindingSource.DataSource = Me.PLDBDataSet
         '
-        'AdminDBBindingSourceSQL
+        'PLDBDataSet
         '
-        Me.AdminDBBindingSourceSQL.DataMember = "AdminDB"
-        Me.AdminDBBindingSourceSQL.DataSource = Me.ToothImageDBDataSet
+        Me.PLDBDataSet.DataSetName = "PLDBDataSet"
+        Me.PLDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'ToothImageDBDataSet
+        'AdminDBTableAdapter
         '
-        Me.ToothImageDBDataSet.DataSetName = "ToothImageDBDataSet"
-        Me.ToothImageDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.AdminDBTableAdapter.ClearBeforeFill = True
         '
         'btnClose
         '
@@ -232,7 +227,6 @@ Partial Class frmAdminArea
         '
         'gbAdminDB
         '
-        Me.gbAdminDB.Controls.Add(Me.Label1)
         Me.gbAdminDB.Controls.Add(Me.lblLocationPath)
         Me.gbAdminDB.Controls.Add(Me.lblLocation)
         Me.gbAdminDB.Controls.Add(Me.btnAdminDB)
@@ -265,9 +259,8 @@ Partial Class frmAdminArea
         '
         'btnAdminDB
         '
-        Me.btnAdminDB.Enabled = False
         Me.btnAdminDB.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAdminDB.Location = New System.Drawing.Point(66, 111)
+        Me.btnAdminDB.Location = New System.Drawing.Point(67, 132)
         Me.btnAdminDB.Name = "btnAdminDB"
         Me.btnAdminDB.Size = New System.Drawing.Size(216, 28)
         Me.btnAdminDB.TabIndex = 0
@@ -284,22 +277,6 @@ Partial Class frmAdminArea
         Me.tcAdminChange.SelectedIndex = 0
         Me.tcAdminChange.Size = New System.Drawing.Size(349, 295)
         Me.tcAdminChange.TabIndex = 0
-        '
-        'AdminDBTableAdapterSQL
-        '
-        Me.AdminDBTableAdapterSQL.ClearBeforeFill = True
-        '
-        'Label1
-        '
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(9, 156)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(323, 104)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "Database backup function is only enabled in the Access database version of this a" &
-    "pp. To backup using the SQL database version, please use the SQL Server Manageme" &
-    "nt Studio in the database host device."
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'frmAdminArea
         '
@@ -319,8 +296,8 @@ Partial Class frmAdminArea
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Administrator Area"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AdminDBBindingSourceSQL, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ToothImageDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AdminDBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PLDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tpAdminChange.ResumeLayout(False)
         Me.gbAdminChange.ResumeLayout(False)
         Me.gbAdminChange.PerformLayout()
@@ -332,6 +309,11 @@ Partial Class frmAdminArea
 
     End Sub
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents PLDBDataSet As ProjeckMilk.PLDBDataSet
+    Friend WithEvents AdminDBBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents AdminDBTableAdapter As ProjeckMilk.PLDBDataSetTableAdapters.adminDBTableAdapter
+    Friend WithEvents UsernameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PasswordDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents tpAdminChange As System.Windows.Forms.TabPage
     Friend WithEvents gbAdminChange As System.Windows.Forms.GroupBox
@@ -350,11 +332,4 @@ Partial Class frmAdminArea
     Friend WithEvents lblLocation As System.Windows.Forms.Label
     Friend WithEvents btnAdminDB As System.Windows.Forms.Button
     Friend WithEvents tcAdminChange As System.Windows.Forms.TabControl
-    Friend WithEvents ToothImageDBDataSet As ToothImageDBDataSet
-    Friend WithEvents AdminDBBindingSourceSQL As BindingSource
-    Friend WithEvents AdminDBTableAdapterSQL As ToothImageDBDataSetTableAdapters.AdminDBTableAdapter
-    Friend WithEvents AdminIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents AUsernameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents APasswordDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents Label1 As Label
 End Class

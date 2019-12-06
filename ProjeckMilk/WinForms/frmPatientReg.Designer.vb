@@ -47,15 +47,9 @@ Partial Class frmPatientReg
         Me.PLDBDataSet = New ProjeckMilk.PLDBDataSet()
         Me.PatientDBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PatientDBTableAdapter = New ProjeckMilk.PLDBDataSetTableAdapters.patientDBTableAdapter()
-        Me.ToothImageDBDataSet = New ProjeckMilk.ToothImageDBDataSet()
-        Me.PatientDBBindingSourceSQL = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PatientDBTableAdapterSQL = New ProjeckMilk.ToothImageDBDataSetTableAdapters.PatientDBTableAdapter()
-        Me.TableAdapterManager = New ProjeckMilk.ToothImageDBDataSetTableAdapters.TableAdapterManager()
         Me.gbRegName.SuspendLayout()
         CType(Me.PLDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PatientDBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ToothImageDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PatientDBBindingSourceSQL, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'gbRegName
@@ -82,7 +76,7 @@ Partial Class frmPatientReg
         Me.gbRegName.Controls.Add(Me.lblReglName)
         Me.gbRegName.Location = New System.Drawing.Point(12, 6)
         Me.gbRegName.Name = "gbRegName"
-        Me.gbRegName.Size = New System.Drawing.Size(435, 276)
+        Me.gbRegName.Size = New System.Drawing.Size(427, 274)
         Me.gbRegName.TabIndex = 0
         Me.gbRegName.TabStop = False
         Me.gbRegName.Text = "Patient Information"
@@ -279,38 +273,13 @@ Partial Class frmPatientReg
         '
         Me.PatientDBTableAdapter.ClearBeforeFill = True
         '
-        'ToothImageDBDataSet
-        '
-        Me.ToothImageDBDataSet.DataSetName = "ToothImageDBDataSet"
-        Me.ToothImageDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'PatientDBBindingSourceSQL
-        '
-        Me.PatientDBBindingSourceSQL.DataMember = "PatientDB"
-        Me.PatientDBBindingSourceSQL.DataSource = Me.ToothImageDBDataSet
-        '
-        'PatientDBTableAdapterSQL
-        '
-        Me.PatientDBTableAdapterSQL.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.AdminDBTableAdapter = Nothing
-        Me.TableAdapterManager.AppointmentsDBTableAdapter = Nothing
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.MedsQueueDBTableAdapter = Nothing
-        Me.TableAdapterManager.PatientDBTableAdapter = Me.PatientDBTableAdapterSQL
-        Me.TableAdapterManager.ServiceQueueDBTableAdapter = Nothing
-        Me.TableAdapterManager.ServiceRecordDBTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = ProjeckMilk.ToothImageDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
         'frmPatientReg
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.ProjeckMilk.My.Resources.Resources.Background
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(451, 291)
+        Me.ClientSize = New System.Drawing.Size(451, 292)
         Me.Controls.Add(Me.gbRegName)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -321,8 +290,6 @@ Partial Class frmPatientReg
         Me.gbRegName.PerformLayout()
         CType(Me.PLDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PatientDBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ToothImageDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PatientDBBindingSourceSQL, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -349,8 +316,4 @@ Partial Class frmPatientReg
     Friend WithEvents PatientDBBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents PatientDBTableAdapter As ProjeckMilk.PLDBDataSetTableAdapters.patientDBTableAdapter
     Friend WithEvents btnSaveRecord As System.Windows.Forms.Button
-    Friend WithEvents ToothImageDBDataSet As ToothImageDBDataSet
-    Friend WithEvents PatientDBBindingSourceSQL As BindingSource
-    Friend WithEvents PatientDBTableAdapterSQL As ToothImageDBDataSetTableAdapters.PatientDBTableAdapter
-    Friend WithEvents TableAdapterManager As ToothImageDBDataSetTableAdapters.TableAdapterManager
 End Class

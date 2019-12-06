@@ -9,16 +9,16 @@
     End Sub
 
     Private Sub frmLogin_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'ToothImageDBDataSet.AdminDB' table. You can move, or remove it, as needed.
+        'TODO: This line of code loads data into the 'PLDBDataSet.adminDB' table. You can move, or remove it, as needed.
         Try
-            Me.AdminDBTableAdapterSQL.Fill(Me.ToothImageDBDataSet.AdminDB)
+            Me.AdminDBTableAdapter.Fill(Me.PLDBDataSet.adminDB)
         Catch ex As Exception
-            MsgBox("Cannot access database file. Please check the database connection.", vbCritical, "Database Error")
+            MsgBox("Cannot access database file. Please check if the Access Database Engine is installed.", vbCritical, "Database Error")
             End
         End Try
         txtLoginUN.Text = n
         txtLoginPass.Text = ""
-        If Me.DataGridView1.Rows(Me.a).Cells(1).Value.ToString = "admin" And Me.DataGridView1.Rows(Me.a).Cells(2).Value.ToString = "admin" Then
+        If Me.DataGridView1.Rows(Me.a).Cells(0).Value.ToString = "admin" And Me.DataGridView1.Rows(Me.a).Cells(1).Value.ToString = "admin" Then
             lblLogInNote.Visible = True
             lblNote1.Visible = True
             lblNote2.Visible = True
@@ -44,8 +44,8 @@
 
     Private Sub btnLoginOK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoginOK.Click
         For Me.a = 0 To (Me.DataGridView1.RowCount - 1)
-            If txtLoginUN.Text = Me.DataGridView1.Rows(Me.a).Cells(1).Value.ToString And txtLoginPass.Text = Me.DataGridView1.Rows(Me.a).Cells(2).Value.ToString Then
-                MainFormMetro.Text = "Tooth Image Dental Records™ - SQL Edition - " + "Administrator: " + txtLoginUN.Text
+            If txtLoginUN.Text = Me.DataGridView1.Rows(Me.a).Cells(0).Value.ToString And txtLoginPass.Text = Me.DataGridView1.Rows(Me.a).Cells(1).Value.ToString Then
+                MainFormMetro.Text = "Tooth Image Dental Records™ - " + "Administrator: " + txtLoginUN.Text
                 MainFormMetro.BackgroundWorker1.RunWorkerAsync()
                 MainFormMetro.auth = 1
                 MainFormMetro.admin = txtLoginUN.Text
@@ -91,7 +91,7 @@
 
     Private Sub btnConfirm_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConfirm.Click
         For Me.a = 0 To (Me.DataGridView1.RowCount - 1)
-            If txtLoginUN.Text = Me.DataGridView1.Rows(Me.a).Cells(1).Value.ToString And txtLoginPass.Text = Me.DataGridView1.Rows(Me.a).Cells(2).Value.ToString Then
+            If txtLoginUN.Text = Me.DataGridView1.Rows(Me.a).Cells(0).Value.ToString And txtLoginPass.Text = Me.DataGridView1.Rows(Me.a).Cells(1).Value.ToString Then
                 frmPatientSearch.b = 1
                 c = 0
                 Me.Close()

@@ -35,8 +35,8 @@
                 Me.Validate()
                 frmBalance.ValidateChildren()
                 frmBalance.DataGridView1.EndEdit()
-                frmBalance.ServiceRecordDBTableAdapter.Update(frmBalance.ToothImageDBDataSet.ServiceRecordDB)
-                frmBalance.ServiceRecordDBTableAdapter.Fill(frmBalance.ToothImageDBDataSet.ServiceRecordDB)
+                frmBalance.ServiceRecordTableAdapter.Update(frmBalance.PLDBDataSet.serviceRecord)
+                frmBalance.ServiceRecordTableAdapter.Fill(frmBalance.PLDBDataSet.serviceRecord)
                 Me.Close()
                 If frmBalance.DataGridView1.Rows.Count >= 1 Then
                     frmBalance.btnBalPaid.Enabled = True
@@ -45,7 +45,7 @@
                 End If
             End If
         Catch ex As Exception
-            MsgBox("Cannot access database file. Please check the database connection.", vbCritical, "Database Error")
+            MsgBox("Cannot access database file. Please check if the Access 2010 Database Engine is installed.", vbCritical, "Database Error")
             End
         End Try
     End Sub

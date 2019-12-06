@@ -72,18 +72,16 @@ Public Class MainFormMetro
     End Sub
 
     Private Sub MainFormMetro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'ToothImageDBDataSet.AppointmentsDB' table. You can move, or remove it, as needed.
         NotifyIcon1.Icon = Me.Icon
         NotifyIcon1.Visible = True
         frmLogin.ShowDialog(Me)
         m = Date.Now.Minute
         i = 1
         Try
-            Me.ServiceQueueDBTableAdapter.Fill(Me.ToothImageDBDataSet.ServiceQueueDB)
-            'Me.AppointmentsDBTableAdapter.Fill(Me.ToothImageDBDataSet.AppointmentsDB)
-            'Me.ServiceQueueTableAdapter.Fill(Me.PLDBDataSet.serviceQueue)
+
+            Me.ServiceQueueTableAdapter.Fill(Me.PLDBDataSet.serviceQueue)
         Catch ex As Exception
-            MsgBox("Cannot access database file. Please check the database connection.", vbCritical, "Database Error")
+            MsgBox("Cannot access database file. Please check if the Access Database Engine is installed.", vbCritical, "Database Error")
             'End
         End Try
         DataGridView1.Columns(0).Visible = False
@@ -154,10 +152,9 @@ Public Class MainFormMetro
             e.Cancel = True
         End If
         Dim dv As DataView = New DataView
-        Me.AppointmentsDBTableAdapter.Fill(Me.ToothImageDBDataSet.AppointmentsDB)
-        'Me.ApptmntTableAdapter.Fill(Me.PLDBDataSet.apptmnt)
-        dv.Table = Me.ToothImageDBDataSet.AppointmentsDB
-        dv.RowFilter = "AppointmentDate = '" & Date.Now.ToShortDateString() & "'"
+        Me.ApptmntTableAdapter.Fill(Me.PLDBDataSet.apptmnt)
+        dv.Table = PLDBDataSet.apptmnt
+        dv.RowFilter = "apptDate = '" & Date.Now.ToShortDateString() & "'"
         Me.DataGridView2.DataSource = dv
         h = Me.DataGridView2.RowCount - 1
         For z As Integer = 0 To Me.DataGridView2.RowCount - 1
@@ -222,11 +219,11 @@ Public Class MainFormMetro
         Dim conf As Integer
         conf = MsgBox("Do you really want to remove " + Me.DataGridView1.CurrentRow.Cells(1).Value.ToString + " from the queue list?", MsgBoxStyle.YesNo, "Confirm Cancelation")
         If conf = MsgBoxResult.Yes Then
-            Me.ServiceQueueDBTableAdapter.Delete(Me.DataGridView1.CurrentRow.Cells(0).Value, Me.DataGridView1.CurrentRow.Cells(1).Value.ToString _
+            Me.ServiceQueueTableAdapter.Delete(Me.DataGridView1.CurrentRow.Cells(0).Value, Me.DataGridView1.CurrentRow.Cells(1).Value.ToString _
                                                                   , Me.DataGridView1.CurrentRow.Cells(2).Value.ToString(), Me.DataGridView1.CurrentRow.Cells(3).Value _
                                                                   , Me.DataGridView1.CurrentRow.Cells(4).Value.ToString(), Me.DataGridView1.CurrentRow.Cells(5).Value.ToString() _
                                                                   , Me.DataGridView1.CurrentRow.Cells(6).Value.ToString(), Me.DataGridView1.CurrentRow.Cells(7).Value.ToString())
-            Me.ServiceQueueDBTableAdapter.Fill(Me.ToothImageDBDataSet.ServiceQueueDB)
+            Me.ServiceQueueTableAdapter.Fill(Me.PLDBDataSet.serviceQueue)
             If DataGridView1.Rows.Count > 0 Then
                 ButtonAdv4.Enabled = True
                 ButtonAdv5.Enabled = True
@@ -263,14 +260,14 @@ Public Class MainFormMetro
             Dim aa As String = "N/A"
             Dim bal As String = "0.0000"
             Dim dat As Date = Me.DataGridView1.CurrentRow.Cells(3).Value
-            frmPatientProfile.ServiceRecordDBTableAdapter.Insert(Me.DataGridView1.CurrentRow.Cells(1).Value.ToString, Me.DataGridView1.CurrentRow.Cells(2).Value.ToString _
+            frmPatientProfile.ServiceRecordTableAdapter.Insert(Me.DataGridView1.CurrentRow.Cells(1).Value.ToString, Me.DataGridView1.CurrentRow.Cells(2).Value.ToString _
                                                                , dat.ToShortDateString, Me.DataGridView1.CurrentRow.Cells(4).Value.ToString, aa, Me.DataGridView1.CurrentRow.Cells(5).Value, bal _
                                                                , Me.DataGridView1.CurrentRow.Cells(6).Value.ToString, bal, dat.ToShortTimeString, Me.DataGridView1.CurrentRow.Cells(7).Value.ToString)
-            Me.ServiceQueueDBTableAdapter.Delete(Me.DataGridView1.CurrentRow.Cells(0).Value, Me.DataGridView1.CurrentRow.Cells(1).Value.ToString _
+            Me.ServiceQueueTableAdapter.Delete(Me.DataGridView1.CurrentRow.Cells(0).Value, Me.DataGridView1.CurrentRow.Cells(1).Value.ToString _
                                                                   , Me.DataGridView1.CurrentRow.Cells(2).Value.ToString(), Me.DataGridView1.CurrentRow.Cells(3).Value _
                                                                   , Me.DataGridView1.CurrentRow.Cells(4).Value.ToString(), Me.DataGridView1.CurrentRow.Cells(5).Value.ToString() _
                                                                   , Me.DataGridView1.CurrentRow.Cells(6).Value.ToString(), Me.DataGridView1.CurrentRow.Cells(7).Value.ToString())
-            Me.ServiceQueueDBTableAdapter.Fill(Me.ToothImageDBDataSet.ServiceQueueDB)
+            Me.ServiceQueueTableAdapter.Fill(Me.PLDBDataSet.serviceQueue)
             If DataGridView1.Rows.Count > 0 Then
                 ButtonAdv4.Enabled = True
                 ButtonAdv5.Enabled = True

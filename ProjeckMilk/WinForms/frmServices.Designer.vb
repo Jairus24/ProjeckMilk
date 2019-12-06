@@ -113,7 +113,7 @@ Partial Class frmServices
         'ComboBox2
         '
         Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox2.Items.AddRange(New Object() {"OP: Heavy", "OP: Moderate", "OP: Light"})
+        Me.ComboBox2.Items.AddRange(New Object() {"OP: Heavy", "OP: Moderate", "OP: Mild"})
         Me.ComboBox2.Location = New System.Drawing.Point(9, 28)
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(141, 21)
@@ -188,7 +188,7 @@ Partial Class frmServices
         '
         Me.cbxServices2.AutoSize = True
         Me.cbxServices2.BackColor = System.Drawing.Color.Transparent
-        Me.cbxServices2.Location = New System.Drawing.Point(10, 67)
+        Me.cbxServices2.Location = New System.Drawing.Point(78, 67)
         Me.cbxServices2.Name = "cbxServices2"
         Me.cbxServices2.Size = New System.Drawing.Size(101, 17)
         Me.cbxServices2.TabIndex = 3
@@ -198,7 +198,7 @@ Partial Class frmServices
         'cbxServices1
         '
         Me.cbxServices1.BackColor = System.Drawing.Color.Transparent
-        Me.cbxServices1.Location = New System.Drawing.Point(114, 67)
+        Me.cbxServices1.Location = New System.Drawing.Point(10, 67)
         Me.cbxServices1.Name = "cbxServices1"
         Me.cbxServices1.Size = New System.Drawing.Size(64, 17)
         Me.cbxServices1.TabIndex = 2
@@ -260,7 +260,7 @@ Partial Class frmServices
         Me.btnServicesAdd.Name = "btnServicesAdd"
         Me.btnServicesAdd.Size = New System.Drawing.Size(113, 47)
         Me.btnServicesAdd.TabIndex = 21
-        Me.btnServicesAdd.Text = "Add To Patient Queue"
+        Me.btnServicesAdd.Text = "Add to Waiting List"
         Me.btnServicesAdd.UseVisualStyleBackColor = True
         '
         'txtServicesAmount

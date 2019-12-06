@@ -23,14 +23,31 @@ Partial Class MainFormMetro
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainFormMetro))
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.ServiceQueueDBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.IDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DentalServiceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServiceDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ToothNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServiceAmountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PDentistDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PAddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServiceQueueBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PLDBDataSet = New ProjeckMilk.PLDBDataSet()
+        Me.ServiceQueueTableAdapter = New ProjeckMilk.PLDBDataSetTableAdapters.serviceQueueTableAdapter()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.AppointmentsDBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.IDDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PNameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ApptDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ApptTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServiceTypeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PDentistDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PAddressDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ApptmntBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ApptmntTableAdapter = New ProjeckMilk.PLDBDataSetTableAdapters.apptmntTableAdapter()
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
@@ -51,36 +68,16 @@ Partial Class MainFormMetro
         Me.ButtonAdv4 = New Syncfusion.Windows.Forms.ButtonAdv()
         Me.ButtonAdv5 = New Syncfusion.Windows.Forms.ButtonAdv()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.AppointmentIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PatientNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AppointmentDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AppointmentTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServiceTypeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DentistDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PatientAddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ToothImageDBDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ToothImageDBDataSet = New ProjeckMilk.ToothImageDBDataSet()
-        Me.ServiceQueueDBTableAdapter = New ProjeckMilk.ToothImageDBDataSetTableAdapters.ServiceQueueDBTableAdapter()
-        Me.AppointmentsDBTableAdapter = New ProjeckMilk.ToothImageDBDataSetTableAdapters.AppointmentsDBTableAdapter()
-        Me.ServiceQueueIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PatientNameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DentalServiceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServiceDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ToothNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServiceAmountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DentistDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PatientAddressDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ServiceQueueDBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ServiceQueueBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PLDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AppointmentsDBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ApptmntBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BorderLayout1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ToothImageDBDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ToothImageDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
@@ -95,16 +92,16 @@ Partial Class MainFormMetro
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ServiceQueueIDDataGridViewTextBoxColumn, Me.PatientNameDataGridViewTextBoxColumn1, Me.DentalServiceDataGridViewTextBoxColumn, Me.ServiceDateDataGridViewTextBoxColumn, Me.ToothNumberDataGridViewTextBoxColumn, Me.ServiceAmountDataGridViewTextBoxColumn, Me.DentistDataGridViewTextBoxColumn1, Me.PatientAddressDataGridViewTextBoxColumn1})
-        Me.DataGridView1.DataSource = Me.ServiceQueueDBBindingSource
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle2
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDDataGridViewTextBoxColumn, Me.PNameDataGridViewTextBoxColumn, Me.DentalServiceDataGridViewTextBoxColumn, Me.ServiceDateDataGridViewTextBoxColumn, Me.ToothNumberDataGridViewTextBoxColumn, Me.ServiceAmountDataGridViewTextBoxColumn, Me.PDentistDataGridViewTextBoxColumn, Me.PAddressDataGridViewTextBoxColumn})
+        Me.DataGridView1.DataSource = Me.ServiceQueueBindingSource
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.Location = New System.Drawing.Point(209, 185)
         Me.BorderLayout1.SetMinimumSize(Me.DataGridView1, New System.Drawing.Size(784, 394))
         Me.DataGridView1.MultiSelect = False
@@ -120,25 +117,106 @@ Partial Class MainFormMetro
         Me.DataGridView1.TabIndex = 2
         Me.DataGridView1.TabStop = False
         '
-        'ServiceQueueDBBindingSource
+        'IDDataGridViewTextBoxColumn
         '
-        Me.ServiceQueueDBBindingSource.DataMember = "ServiceQueueDB"
-        Me.ServiceQueueDBBindingSource.DataSource = Me.ToothImageDBDataSetBindingSource
+        Me.IDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.IDDataGridViewTextBoxColumn.DataPropertyName = "ID"
+        Me.IDDataGridViewTextBoxColumn.HeaderText = "ID"
+        Me.IDDataGridViewTextBoxColumn.Name = "IDDataGridViewTextBoxColumn"
+        Me.IDDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.IDDataGridViewTextBoxColumn.Visible = False
+        '
+        'PNameDataGridViewTextBoxColumn
+        '
+        Me.PNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.PNameDataGridViewTextBoxColumn.DataPropertyName = "pName"
+        Me.PNameDataGridViewTextBoxColumn.HeaderText = "Patient Name"
+        Me.PNameDataGridViewTextBoxColumn.Name = "PNameDataGridViewTextBoxColumn"
+        Me.PNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PNameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'DentalServiceDataGridViewTextBoxColumn
+        '
+        Me.DentalServiceDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DentalServiceDataGridViewTextBoxColumn.DataPropertyName = "dentalService"
+        Me.DentalServiceDataGridViewTextBoxColumn.HeaderText = "Service Type"
+        Me.DentalServiceDataGridViewTextBoxColumn.Name = "DentalServiceDataGridViewTextBoxColumn"
+        Me.DentalServiceDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DentalServiceDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'ServiceDateDataGridViewTextBoxColumn
+        '
+        Me.ServiceDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ServiceDateDataGridViewTextBoxColumn.DataPropertyName = "serviceDate"
+        Me.ServiceDateDataGridViewTextBoxColumn.HeaderText = "Date/Time"
+        Me.ServiceDateDataGridViewTextBoxColumn.Name = "ServiceDateDataGridViewTextBoxColumn"
+        Me.ServiceDateDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServiceDateDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'ToothNumberDataGridViewTextBoxColumn
+        '
+        Me.ToothNumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ToothNumberDataGridViewTextBoxColumn.DataPropertyName = "toothNumber"
+        Me.ToothNumberDataGridViewTextBoxColumn.HeaderText = "Tooth Number"
+        Me.ToothNumberDataGridViewTextBoxColumn.Name = "ToothNumberDataGridViewTextBoxColumn"
+        Me.ToothNumberDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ToothNumberDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'ServiceAmountDataGridViewTextBoxColumn
+        '
+        Me.ServiceAmountDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ServiceAmountDataGridViewTextBoxColumn.DataPropertyName = "serviceAmount"
+        Me.ServiceAmountDataGridViewTextBoxColumn.HeaderText = "Amount"
+        Me.ServiceAmountDataGridViewTextBoxColumn.Name = "ServiceAmountDataGridViewTextBoxColumn"
+        Me.ServiceAmountDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServiceAmountDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'PDentistDataGridViewTextBoxColumn
+        '
+        Me.PDentistDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.PDentistDataGridViewTextBoxColumn.DataPropertyName = "pDentist"
+        Me.PDentistDataGridViewTextBoxColumn.HeaderText = "Dentist"
+        Me.PDentistDataGridViewTextBoxColumn.Name = "PDentistDataGridViewTextBoxColumn"
+        Me.PDentistDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PDentistDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'PAddressDataGridViewTextBoxColumn
+        '
+        Me.PAddressDataGridViewTextBoxColumn.DataPropertyName = "pAddress"
+        Me.PAddressDataGridViewTextBoxColumn.HeaderText = "pAddress"
+        Me.PAddressDataGridViewTextBoxColumn.Name = "PAddressDataGridViewTextBoxColumn"
+        Me.PAddressDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PAddressDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServiceQueueBindingSource
+        '
+        Me.ServiceQueueBindingSource.DataMember = "serviceQueue"
+        Me.ServiceQueueBindingSource.DataSource = Me.PLDBDataSet
+        '
+        'PLDBDataSet
+        '
+        Me.PLDBDataSet.DataSetName = "PLDBDataSet"
+        Me.PLDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ServiceQueueTableAdapter
+        '
+        Me.ServiceQueueTableAdapter.ClearBeforeFill = True
         '
         'DataGridView2
         '
         Me.DataGridView2.AutoGenerateColumns = False
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AppointmentIDDataGridViewTextBoxColumn, Me.PatientNameDataGridViewTextBoxColumn, Me.AppointmentDateDataGridViewTextBoxColumn, Me.AppointmentTimeDataGridViewTextBoxColumn, Me.ServiceTypeDataGridViewTextBoxColumn, Me.DentistDataGridViewTextBoxColumn, Me.PatientAddressDataGridViewTextBoxColumn})
-        Me.DataGridView2.DataSource = Me.AppointmentsDBBindingSource
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView2.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDDataGridViewTextBoxColumn1, Me.PNameDataGridViewTextBoxColumn1, Me.ApptDateDataGridViewTextBoxColumn, Me.ApptTimeDataGridViewTextBoxColumn, Me.ServiceTypeDataGridViewTextBoxColumn, Me.PDentistDataGridViewTextBoxColumn1, Me.PAddressDataGridViewTextBoxColumn1})
+        Me.DataGridView2.DataSource = Me.ApptmntBindingSource
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView2.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView2.Location = New System.Drawing.Point(296, 380)
         Me.BorderLayout1.SetMinimumSize(Me.DataGridView2, New System.Drawing.Size(240, 40))
         Me.DataGridView2.Name = "DataGridView2"
@@ -148,10 +226,56 @@ Partial Class MainFormMetro
         Me.DataGridView2.TabStop = False
         Me.DataGridView2.Visible = False
         '
-        'AppointmentsDBBindingSource
+        'IDDataGridViewTextBoxColumn1
         '
-        Me.AppointmentsDBBindingSource.DataMember = "AppointmentsDB"
-        Me.AppointmentsDBBindingSource.DataSource = Me.ToothImageDBDataSetBindingSource
+        Me.IDDataGridViewTextBoxColumn1.DataPropertyName = "ID"
+        Me.IDDataGridViewTextBoxColumn1.HeaderText = "ID"
+        Me.IDDataGridViewTextBoxColumn1.Name = "IDDataGridViewTextBoxColumn1"
+        '
+        'PNameDataGridViewTextBoxColumn1
+        '
+        Me.PNameDataGridViewTextBoxColumn1.DataPropertyName = "pName"
+        Me.PNameDataGridViewTextBoxColumn1.HeaderText = "pName"
+        Me.PNameDataGridViewTextBoxColumn1.Name = "PNameDataGridViewTextBoxColumn1"
+        '
+        'ApptDateDataGridViewTextBoxColumn
+        '
+        Me.ApptDateDataGridViewTextBoxColumn.DataPropertyName = "apptDate"
+        Me.ApptDateDataGridViewTextBoxColumn.HeaderText = "apptDate"
+        Me.ApptDateDataGridViewTextBoxColumn.Name = "ApptDateDataGridViewTextBoxColumn"
+        '
+        'ApptTimeDataGridViewTextBoxColumn
+        '
+        Me.ApptTimeDataGridViewTextBoxColumn.DataPropertyName = "apptTime"
+        Me.ApptTimeDataGridViewTextBoxColumn.HeaderText = "apptTime"
+        Me.ApptTimeDataGridViewTextBoxColumn.Name = "ApptTimeDataGridViewTextBoxColumn"
+        '
+        'ServiceTypeDataGridViewTextBoxColumn
+        '
+        Me.ServiceTypeDataGridViewTextBoxColumn.DataPropertyName = "serviceType"
+        Me.ServiceTypeDataGridViewTextBoxColumn.HeaderText = "serviceType"
+        Me.ServiceTypeDataGridViewTextBoxColumn.Name = "ServiceTypeDataGridViewTextBoxColumn"
+        '
+        'PDentistDataGridViewTextBoxColumn1
+        '
+        Me.PDentistDataGridViewTextBoxColumn1.DataPropertyName = "pDentist"
+        Me.PDentistDataGridViewTextBoxColumn1.HeaderText = "pDentist"
+        Me.PDentistDataGridViewTextBoxColumn1.Name = "PDentistDataGridViewTextBoxColumn1"
+        '
+        'PAddressDataGridViewTextBoxColumn1
+        '
+        Me.PAddressDataGridViewTextBoxColumn1.DataPropertyName = "pAddress"
+        Me.PAddressDataGridViewTextBoxColumn1.HeaderText = "pAddress"
+        Me.PAddressDataGridViewTextBoxColumn1.Name = "PAddressDataGridViewTextBoxColumn1"
+        '
+        'ApptmntBindingSource
+        '
+        Me.ApptmntBindingSource.DataMember = "apptmnt"
+        Me.ApptmntBindingSource.DataSource = Me.PLDBDataSet
+        '
+        'ApptmntTableAdapter
+        '
+        Me.ApptmntTableAdapter.ClearBeforeFill = True
         '
         'NotifyIcon1
         '
@@ -459,142 +583,6 @@ Partial Class MainFormMetro
         Me.Label2.Text = "Patient Queue:"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'AppointmentIDDataGridViewTextBoxColumn
-        '
-        Me.AppointmentIDDataGridViewTextBoxColumn.DataPropertyName = "AppointmentID"
-        Me.AppointmentIDDataGridViewTextBoxColumn.HeaderText = "AppointmentID"
-        Me.AppointmentIDDataGridViewTextBoxColumn.Name = "AppointmentIDDataGridViewTextBoxColumn"
-        Me.AppointmentIDDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PatientNameDataGridViewTextBoxColumn
-        '
-        Me.PatientNameDataGridViewTextBoxColumn.DataPropertyName = "PatientName"
-        Me.PatientNameDataGridViewTextBoxColumn.HeaderText = "PatientName"
-        Me.PatientNameDataGridViewTextBoxColumn.Name = "PatientNameDataGridViewTextBoxColumn"
-        '
-        'AppointmentDateDataGridViewTextBoxColumn
-        '
-        Me.AppointmentDateDataGridViewTextBoxColumn.DataPropertyName = "AppointmentDate"
-        Me.AppointmentDateDataGridViewTextBoxColumn.HeaderText = "AppointmentDate"
-        Me.AppointmentDateDataGridViewTextBoxColumn.Name = "AppointmentDateDataGridViewTextBoxColumn"
-        '
-        'AppointmentTimeDataGridViewTextBoxColumn
-        '
-        Me.AppointmentTimeDataGridViewTextBoxColumn.DataPropertyName = "AppointmentTime"
-        Me.AppointmentTimeDataGridViewTextBoxColumn.HeaderText = "AppointmentTime"
-        Me.AppointmentTimeDataGridViewTextBoxColumn.Name = "AppointmentTimeDataGridViewTextBoxColumn"
-        '
-        'ServiceTypeDataGridViewTextBoxColumn
-        '
-        Me.ServiceTypeDataGridViewTextBoxColumn.DataPropertyName = "ServiceType"
-        Me.ServiceTypeDataGridViewTextBoxColumn.HeaderText = "ServiceType"
-        Me.ServiceTypeDataGridViewTextBoxColumn.Name = "ServiceTypeDataGridViewTextBoxColumn"
-        '
-        'DentistDataGridViewTextBoxColumn
-        '
-        Me.DentistDataGridViewTextBoxColumn.DataPropertyName = "Dentist"
-        Me.DentistDataGridViewTextBoxColumn.HeaderText = "Dentist"
-        Me.DentistDataGridViewTextBoxColumn.Name = "DentistDataGridViewTextBoxColumn"
-        '
-        'PatientAddressDataGridViewTextBoxColumn
-        '
-        Me.PatientAddressDataGridViewTextBoxColumn.DataPropertyName = "PatientAddress"
-        Me.PatientAddressDataGridViewTextBoxColumn.HeaderText = "PatientAddress"
-        Me.PatientAddressDataGridViewTextBoxColumn.Name = "PatientAddressDataGridViewTextBoxColumn"
-        '
-        'ToothImageDBDataSetBindingSource
-        '
-        Me.ToothImageDBDataSetBindingSource.DataSource = Me.ToothImageDBDataSet
-        Me.ToothImageDBDataSetBindingSource.Position = 0
-        '
-        'ToothImageDBDataSet
-        '
-        Me.ToothImageDBDataSet.DataSetName = "ToothImageDBDataSet"
-        Me.ToothImageDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'ServiceQueueDBTableAdapter
-        '
-        Me.ServiceQueueDBTableAdapter.ClearBeforeFill = True
-        '
-        'AppointmentsDBTableAdapter
-        '
-        Me.AppointmentsDBTableAdapter.ClearBeforeFill = True
-        '
-        'ServiceQueueIDDataGridViewTextBoxColumn
-        '
-        Me.ServiceQueueIDDataGridViewTextBoxColumn.DataPropertyName = "serviceQueueID"
-        Me.ServiceQueueIDDataGridViewTextBoxColumn.HeaderText = "serviceQueueID"
-        Me.ServiceQueueIDDataGridViewTextBoxColumn.Name = "ServiceQueueIDDataGridViewTextBoxColumn"
-        Me.ServiceQueueIDDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServiceQueueIDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.ServiceQueueIDDataGridViewTextBoxColumn.Visible = False
-        '
-        'PatientNameDataGridViewTextBoxColumn1
-        '
-        Me.PatientNameDataGridViewTextBoxColumn1.DataPropertyName = "PatientName"
-        Me.PatientNameDataGridViewTextBoxColumn1.HeaderText = "Patient Name"
-        Me.PatientNameDataGridViewTextBoxColumn1.Name = "PatientNameDataGridViewTextBoxColumn1"
-        Me.PatientNameDataGridViewTextBoxColumn1.ReadOnly = True
-        Me.PatientNameDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.PatientNameDataGridViewTextBoxColumn1.Width = 250
-        '
-        'DentalServiceDataGridViewTextBoxColumn
-        '
-        Me.DentalServiceDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DentalServiceDataGridViewTextBoxColumn.DataPropertyName = "DentalService"
-        Me.DentalServiceDataGridViewTextBoxColumn.HeaderText = "Dental Service"
-        Me.DentalServiceDataGridViewTextBoxColumn.Name = "DentalServiceDataGridViewTextBoxColumn"
-        Me.DentalServiceDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DentalServiceDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'ServiceDateDataGridViewTextBoxColumn
-        '
-        Me.ServiceDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ServiceDateDataGridViewTextBoxColumn.DataPropertyName = "ServiceDate"
-        Me.ServiceDateDataGridViewTextBoxColumn.HeaderText = "Date and Time"
-        Me.ServiceDateDataGridViewTextBoxColumn.Name = "ServiceDateDataGridViewTextBoxColumn"
-        Me.ServiceDateDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServiceDateDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'ToothNumberDataGridViewTextBoxColumn
-        '
-        Me.ToothNumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ToothNumberDataGridViewTextBoxColumn.DataPropertyName = "ToothNumber"
-        Me.ToothNumberDataGridViewTextBoxColumn.HeaderText = "Tooth No."
-        Me.ToothNumberDataGridViewTextBoxColumn.Name = "ToothNumberDataGridViewTextBoxColumn"
-        Me.ToothNumberDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ToothNumberDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'ServiceAmountDataGridViewTextBoxColumn
-        '
-        Me.ServiceAmountDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ServiceAmountDataGridViewTextBoxColumn.DataPropertyName = "ServiceAmount"
-        DataGridViewCellStyle1.Format = "C2"
-        DataGridViewCellStyle1.NullValue = "0.00"
-        Me.ServiceAmountDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
-        Me.ServiceAmountDataGridViewTextBoxColumn.HeaderText = "Amount"
-        Me.ServiceAmountDataGridViewTextBoxColumn.Name = "ServiceAmountDataGridViewTextBoxColumn"
-        Me.ServiceAmountDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServiceAmountDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'DentistDataGridViewTextBoxColumn1
-        '
-        Me.DentistDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DentistDataGridViewTextBoxColumn1.DataPropertyName = "Dentist"
-        Me.DentistDataGridViewTextBoxColumn1.HeaderText = "Dentist"
-        Me.DentistDataGridViewTextBoxColumn1.Name = "DentistDataGridViewTextBoxColumn1"
-        Me.DentistDataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DentistDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'PatientAddressDataGridViewTextBoxColumn1
-        '
-        Me.PatientAddressDataGridViewTextBoxColumn1.DataPropertyName = "PatientAddress"
-        Me.PatientAddressDataGridViewTextBoxColumn1.HeaderText = "PatientAddress"
-        Me.PatientAddressDataGridViewTextBoxColumn1.Name = "PatientAddressDataGridViewTextBoxColumn1"
-        Me.PatientAddressDataGridViewTextBoxColumn1.ReadOnly = True
-        Me.PatientAddressDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.PatientAddressDataGridViewTextBoxColumn1.Visible = False
-        '
         'MainFormMetro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -618,11 +606,12 @@ Partial Class MainFormMetro
         Me.Style.TitleBar.BottomBorderColor = System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(199, Byte), Integer))
         Me.Style.TitleBar.ForeColor = System.Drawing.Color.White
         Me.Style.TitleBar.TextHorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        Me.Text = "Tooth Image Dental Records™ - SQL Edition"
+        Me.Text = "Tooth Image Dental Records™"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ServiceQueueDBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ServiceQueueBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PLDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AppointmentsDBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ApptmntBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BorderLayout1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -630,14 +619,24 @@ Partial Class MainFormMetro
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ToothImageDBDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ToothImageDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents PLDBDataSet As PLDBDataSet
+    Friend WithEvents ServiceQueueBindingSource As BindingSource
+    Friend WithEvents ServiceQueueTableAdapter As PLDBDataSetTableAdapters.serviceQueueTableAdapter
     Friend WithEvents DataGridView2 As DataGridView
+    Friend WithEvents ApptmntBindingSource As BindingSource
+    Friend WithEvents ApptmntTableAdapter As PLDBDataSetTableAdapters.apptmntTableAdapter
+    Friend WithEvents IDDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents PNameDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents ApptDateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ApptTimeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ServiceTypeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PDentistDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents PAddressDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents NotifyIcon1 As NotifyIcon
     Friend WithEvents Timer1 As Timer
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
@@ -652,32 +651,18 @@ Partial Class MainFormMetro
     Friend WithEvents ButtonAdv3 As Syncfusion.Windows.Forms.ButtonAdv
     Friend WithEvents ButtonAdv2 As Syncfusion.Windows.Forms.ButtonAdv
     Friend WithEvents dateLabel As Label
+    Friend WithEvents IDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DentalServiceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ServiceDateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ToothNumberDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ServiceAmountDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PDentistDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PAddressDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Panel3 As Panel
     Friend WithEvents dateLabel3 As Label
     Friend WithEvents dateLabel2 As Label
     Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents AppointmentIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PatientNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents AppointmentDateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents AppointmentTimeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ServiceTypeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DentistDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PatientAddressDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents MedsQueueIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ToothImageDBDataSetBindingSource As BindingSource
-    Friend WithEvents ToothImageDBDataSet As ToothImageDBDataSet
-    Friend WithEvents ServiceQueueDBBindingSource As BindingSource
-    Friend WithEvents ServiceQueueDBTableAdapter As ToothImageDBDataSetTableAdapters.ServiceQueueDBTableAdapter
-    Friend WithEvents AppointmentsDBBindingSource As BindingSource
-    Friend WithEvents AppointmentsDBTableAdapter As ToothImageDBDataSetTableAdapters.AppointmentsDBTableAdapter
-    Friend WithEvents ServiceQueueIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PatientNameDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DentalServiceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ServiceDateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ToothNumberDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ServiceAmountDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DentistDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents PatientAddressDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
 End Class

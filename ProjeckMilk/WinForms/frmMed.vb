@@ -10,13 +10,11 @@
         End If
     End Sub
     Private Sub frmMed_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'ToothImageDBDataSet.MedsQueueDB' table. You can move, or remove it, as needed.
         'TODO: This line of code loads data into the 'PLDBDataSet.medQueue' table. You can move, or remove it, as needed.
         Try
-            Me.MedsQueueDBTableAdapter.Fill(Me.ToothImageDBDataSet.MedsQueueDB)
-            'Me.MedQueueTableAdapter.Fill(Me.PLDBDataSet.medQueue)
+            Me.MedQueueTableAdapter.Fill(Me.PLDBDataSet.medQueue)
         Catch ex As Exception
-            MsgBox("Cannot access database file. Please check the database connection.", vbCritical, "Database Error")
+            MsgBox("Cannot access database file. Please check if the Access Database Engine is installed.", vbCritical, "Database Error")
             End
         End Try
         If aa = 1 Then
@@ -44,18 +42,18 @@
                     bal = 0
                     paid = Me.DataGridView1.CurrentRow.Cells(5).Value
                 End If
-                frmPatientProfile.ServiceRecordDBTableAdapter.Insert(Me.DataGridView1.CurrentRow.Cells(1).Value.ToString, Me.DataGridView1.CurrentRow.Cells(2).Value.ToString _
+                frmPatientProfile.ServiceRecordTableAdapter.Insert(Me.DataGridView1.CurrentRow.Cells(1).Value.ToString, Me.DataGridView1.CurrentRow.Cells(2).Value.ToString _
                                                                , Date.Now.ToShortDateString, Me.DataGridView1.CurrentRow.Cells(4).Value.ToString, txtMed.Text, Me.DataGridView1.CurrentRow.Cells(5).Value, bal _
                                                                , Me.DataGridView1.CurrentRow.Cells(6).Value.ToString, paid, Date.Now.ToShortTimeString, Me.DataGridView1.CurrentRow.Cells(7).Value.ToString)
-                Me.MedsQueueDBTableAdapter.Delete(Me.DataGridView1.CurrentRow.Cells(0).Value, Me.DataGridView1.CurrentRow.Cells(1).Value.ToString _
+                Me.MedQueueTableAdapter.Delete(Me.DataGridView1.CurrentRow.Cells(0).Value, Me.DataGridView1.CurrentRow.Cells(1).Value.ToString _
                                                                       , Me.DataGridView1.CurrentRow.Cells(2).Value.ToString(), Me.DataGridView1.CurrentRow.Cells(3).Value _
                                                                       , Me.DataGridView1.CurrentRow.Cells(4).Value.ToString(), Me.DataGridView1.CurrentRow.Cells(5).Value.ToString() _
                                                                       , Me.DataGridView1.CurrentRow.Cells(6).Value.ToString(), Me.DataGridView1.CurrentRow.Cells(7).Value.ToString())
-                Me.MedsQueueDBTableAdapter.Fill(Me.ToothImageDBDataSet.MedsQueueDB)
+                Me.MedQueueTableAdapter.Fill(Me.PLDBDataSet.medQueue)
                 If aaa = 1 Then
-                    frmAppoint.AppointmentsDBTableAdapter.Delete(frmAppoint.DataGridView1.CurrentRow.Cells(0).Value, frmAppoint.DataGridView1.CurrentRow.Cells(1).Value, frmAppoint.DataGridView1.CurrentRow.Cells(2).Value, frmAppoint.DataGridView1.CurrentRow.Cells(3).Value _
+                    frmAppoint.ApptmntTableAdapter.Delete(frmAppoint.DataGridView1.CurrentRow.Cells(0).Value, frmAppoint.DataGridView1.CurrentRow.Cells(1).Value, frmAppoint.DataGridView1.CurrentRow.Cells(2).Value, frmAppoint.DataGridView1.CurrentRow.Cells(3).Value _
                                                               , frmAppoint.DataGridView1.CurrentRow.Cells(4).Value, frmAppoint.DataGridView1.CurrentRow.Cells(5).Value, frmAppoint.DataGridView1.CurrentRow.Cells(6).Value)
-                    frmAppoint.AppointmentsDBTableAdapter.Fill(frmAppoint.ToothImageDBDataSet.AppointmentsDB)
+                    frmAppoint.ApptmntTableAdapter.Fill(frmAppoint.PLDBDataSet.apptmnt)
                     aaa = 0
                 End If
                 aa = 0
@@ -69,14 +67,14 @@
                 bal = 0
                 paid = MainFormMetro.DataGridView1.CurrentRow.Cells(5).Value
             End If
-            frmPatientProfile.ServiceRecordDBTableAdapter.Insert(MainFormMetro.DataGridView1.CurrentRow.Cells(1).Value.ToString, MainFormMetro.DataGridView1.CurrentRow.Cells(2).Value.ToString _
+            frmPatientProfile.ServiceRecordTableAdapter.Insert(MainFormMetro.DataGridView1.CurrentRow.Cells(1).Value.ToString, MainFormMetro.DataGridView1.CurrentRow.Cells(2).Value.ToString _
                                                                , Date.Now.ToShortDateString, MainFormMetro.DataGridView1.CurrentRow.Cells(4).Value.ToString, txtMed.Text, MainFormMetro.DataGridView1.CurrentRow.Cells(5).Value, bal _
                                                                , MainFormMetro.DataGridView1.CurrentRow.Cells(6).Value.ToString, paid, Date.Now.ToShortTimeString, Me.DataGridView1.CurrentRow.Cells(7).Value.ToString)
-            MainFormMetro.ServiceQueueDBTableAdapter.Delete(MainFormMetro.DataGridView1.CurrentRow.Cells(0).Value, MainFormMetro.DataGridView1.CurrentRow.Cells(1).Value.ToString _
+            MainFormMetro.ServiceQueueTableAdapter.Delete(MainFormMetro.DataGridView1.CurrentRow.Cells(0).Value, MainFormMetro.DataGridView1.CurrentRow.Cells(1).Value.ToString _
                                                                   , MainFormMetro.DataGridView1.CurrentRow.Cells(2).Value.ToString(), MainFormMetro.DataGridView1.CurrentRow.Cells(3).Value _
                                                                   , MainFormMetro.DataGridView1.CurrentRow.Cells(4).Value.ToString(), MainFormMetro.DataGridView1.CurrentRow.Cells(5).Value.ToString() _
                                                                   , MainFormMetro.DataGridView1.CurrentRow.Cells(6).Value.ToString(), MainFormMetro.DataGridView1.CurrentRow.Cells(7).Value.ToString())
-            MainFormMetro.ServiceQueueDBTableAdapter.Fill(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
+            MainFormMetro.ServiceQueueTableAdapter.Fill(MainFormMetro.PLDBDataSet.serviceQueue)
             If MainFormMetro.DataGridView1.Rows.Count >= 1 Then
                 MainFormMetro.ButtonAdv4.Enabled = True
                 MainFormMetro.ButtonAdv5.Enabled = True
@@ -96,14 +94,14 @@
                 paid = MainFormMetro.DataGridView1.CurrentRow.Cells(5).Value
             End If
 
-            frmPatientProfile.ServiceRecordDBTableAdapter.Insert(MainFormMetro.DataGridView1.CurrentRow.Cells(1).Value.ToString, MainFormMetro.DataGridView1.CurrentRow.Cells(2).Value.ToString _
+            frmPatientProfile.ServiceRecordTableAdapter.Insert(MainFormMetro.DataGridView1.CurrentRow.Cells(1).Value.ToString, MainFormMetro.DataGridView1.CurrentRow.Cells(2).Value.ToString _
                                                                , Date.Now.ToShortDateString, MainFormMetro.DataGridView1.CurrentRow.Cells(4).Value.ToString, txtMed.Text, MainFormMetro.DataGridView1.CurrentRow.Cells(5).Value, bal _
                                                                , MainFormMetro.DataGridView1.CurrentRow.Cells(6).Value.ToString, paid, Date.Now.ToShortTimeString, MainFormMetro.DataGridView1.CurrentRow.Cells(7).Value.ToString)
-            MainFormMetro.ServiceQueueDBTableAdapter.Delete(MainFormMetro.DataGridView1.CurrentRow.Cells(0).Value, MainFormMetro.DataGridView1.CurrentRow.Cells(1).Value.ToString _
+            MainFormMetro.ServiceQueueTableAdapter.Delete(MainFormMetro.DataGridView1.CurrentRow.Cells(0).Value, MainFormMetro.DataGridView1.CurrentRow.Cells(1).Value.ToString _
                                                                   , MainFormMetro.DataGridView1.CurrentRow.Cells(2).Value.ToString(), MainFormMetro.DataGridView1.CurrentRow.Cells(3).Value _
                                                                   , MainFormMetro.DataGridView1.CurrentRow.Cells(4).Value.ToString(), MainFormMetro.DataGridView1.CurrentRow.Cells(5).Value.ToString() _
                                                                   , MainFormMetro.DataGridView1.CurrentRow.Cells(6).Value.ToString(), MainFormMetro.DataGridView1.CurrentRow.Cells(7).Value.ToString())
-            MainFormMetro.ServiceQueueDBTableAdapter.Fill(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
+            MainFormMetro.ServiceQueueTableAdapter.Fill(MainFormMetro.PLDBDataSet.serviceQueue)
             If MainFormMetro.DataGridView1.Rows.Count >= 1 Then
                 MainFormMetro.ButtonAdv4.Enabled = True
                 MainFormMetro.ButtonAdv5.Enabled = True

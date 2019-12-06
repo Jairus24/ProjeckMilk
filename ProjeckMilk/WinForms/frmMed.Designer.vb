@@ -26,28 +26,27 @@ Partial Class frmMed
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMed))
         Me.bgMed01 = New System.Windows.Forms.GroupBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.pAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MedsQueueIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PatientNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DentalServiceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ServiceDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToothNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ServiceAmountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DentistDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PatientAddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MedsQueueDBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ToothImageDBDataSet = New ProjeckMilk.ToothImageDBDataSet()
+        Me.PDentistDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MedQueueBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PLDBDataSet = New ProjeckMilk.PLDBDataSet()
         Me.txtMedBalance = New System.Windows.Forms.TextBox()
         Me.lblMedBalance = New System.Windows.Forms.Label()
         Me.btnMedConfirm = New System.Windows.Forms.Button()
         Me.lblMed02 = New System.Windows.Forms.Label()
         Me.txtMed = New System.Windows.Forms.TextBox()
         Me.lblMed = New System.Windows.Forms.Label()
-        Me.MedsQueueDBTableAdapter = New ProjeckMilk.ToothImageDBDataSetTableAdapters.MedsQueueDBTableAdapter()
+        Me.MedQueueTableAdapter = New ProjeckMilk.PLDBDataSetTableAdapters.medQueueTableAdapter()
         Me.bgMed01.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MedsQueueDBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ToothImageDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MedQueueBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PLDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'bgMed01
@@ -73,14 +72,70 @@ Partial Class frmMed
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.pAddress, Me.MedsQueueIDDataGridViewTextBoxColumn, Me.PatientNameDataGridViewTextBoxColumn, Me.DentalServiceDataGridViewTextBoxColumn, Me.ServiceDateDataGridViewTextBoxColumn, Me.ToothNumberDataGridViewTextBoxColumn, Me.ServiceAmountDataGridViewTextBoxColumn, Me.DentistDataGridViewTextBoxColumn, Me.PatientAddressDataGridViewTextBoxColumn})
-        Me.DataGridView1.DataSource = Me.MedsQueueDBBindingSource
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDDataGridViewTextBoxColumn, Me.PNameDataGridViewTextBoxColumn, Me.DentalServiceDataGridViewTextBoxColumn, Me.ServiceDateDataGridViewTextBoxColumn, Me.ToothNumberDataGridViewTextBoxColumn, Me.ServiceAmountDataGridViewTextBoxColumn, Me.PDentistDataGridViewTextBoxColumn, Me.pAddress})
+        Me.DataGridView1.DataSource = Me.MedQueueBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(10, 117)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(135, 28)
         Me.DataGridView1.TabIndex = 5
         Me.DataGridView1.Visible = False
+        '
+        'IDDataGridViewTextBoxColumn
+        '
+        Me.IDDataGridViewTextBoxColumn.DataPropertyName = "ID"
+        Me.IDDataGridViewTextBoxColumn.Frozen = True
+        Me.IDDataGridViewTextBoxColumn.HeaderText = "ID"
+        Me.IDDataGridViewTextBoxColumn.Name = "IDDataGridViewTextBoxColumn"
+        Me.IDDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PNameDataGridViewTextBoxColumn
+        '
+        Me.PNameDataGridViewTextBoxColumn.DataPropertyName = "pName"
+        Me.PNameDataGridViewTextBoxColumn.Frozen = True
+        Me.PNameDataGridViewTextBoxColumn.HeaderText = "pName"
+        Me.PNameDataGridViewTextBoxColumn.Name = "PNameDataGridViewTextBoxColumn"
+        Me.PNameDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DentalServiceDataGridViewTextBoxColumn
+        '
+        Me.DentalServiceDataGridViewTextBoxColumn.DataPropertyName = "dentalService"
+        Me.DentalServiceDataGridViewTextBoxColumn.Frozen = True
+        Me.DentalServiceDataGridViewTextBoxColumn.HeaderText = "dentalService"
+        Me.DentalServiceDataGridViewTextBoxColumn.Name = "DentalServiceDataGridViewTextBoxColumn"
+        Me.DentalServiceDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ServiceDateDataGridViewTextBoxColumn
+        '
+        Me.ServiceDateDataGridViewTextBoxColumn.DataPropertyName = "serviceDate"
+        Me.ServiceDateDataGridViewTextBoxColumn.Frozen = True
+        Me.ServiceDateDataGridViewTextBoxColumn.HeaderText = "serviceDate"
+        Me.ServiceDateDataGridViewTextBoxColumn.Name = "ServiceDateDataGridViewTextBoxColumn"
+        Me.ServiceDateDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ToothNumberDataGridViewTextBoxColumn
+        '
+        Me.ToothNumberDataGridViewTextBoxColumn.DataPropertyName = "toothNumber"
+        Me.ToothNumberDataGridViewTextBoxColumn.Frozen = True
+        Me.ToothNumberDataGridViewTextBoxColumn.HeaderText = "toothNumber"
+        Me.ToothNumberDataGridViewTextBoxColumn.Name = "ToothNumberDataGridViewTextBoxColumn"
+        Me.ToothNumberDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ServiceAmountDataGridViewTextBoxColumn
+        '
+        Me.ServiceAmountDataGridViewTextBoxColumn.DataPropertyName = "serviceAmount"
+        Me.ServiceAmountDataGridViewTextBoxColumn.Frozen = True
+        Me.ServiceAmountDataGridViewTextBoxColumn.HeaderText = "serviceAmount"
+        Me.ServiceAmountDataGridViewTextBoxColumn.Name = "ServiceAmountDataGridViewTextBoxColumn"
+        Me.ServiceAmountDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PDentistDataGridViewTextBoxColumn
+        '
+        Me.PDentistDataGridViewTextBoxColumn.DataPropertyName = "pDentist"
+        Me.PDentistDataGridViewTextBoxColumn.Frozen = True
+        Me.PDentistDataGridViewTextBoxColumn.HeaderText = "pDentist"
+        Me.PDentistDataGridViewTextBoxColumn.Name = "PDentistDataGridViewTextBoxColumn"
+        Me.PDentistDataGridViewTextBoxColumn.ReadOnly = True
         '
         'pAddress
         '
@@ -91,71 +146,15 @@ Partial Class frmMed
         Me.pAddress.ReadOnly = True
         Me.pAddress.Visible = False
         '
-        'MedsQueueIDDataGridViewTextBoxColumn
+        'MedQueueBindingSource
         '
-        Me.MedsQueueIDDataGridViewTextBoxColumn.DataPropertyName = "medsQueueID"
-        Me.MedsQueueIDDataGridViewTextBoxColumn.HeaderText = "medsQueueID"
-        Me.MedsQueueIDDataGridViewTextBoxColumn.Name = "MedsQueueIDDataGridViewTextBoxColumn"
-        Me.MedsQueueIDDataGridViewTextBoxColumn.ReadOnly = True
+        Me.MedQueueBindingSource.DataMember = "medQueue"
+        Me.MedQueueBindingSource.DataSource = Me.PLDBDataSet
         '
-        'PatientNameDataGridViewTextBoxColumn
+        'PLDBDataSet
         '
-        Me.PatientNameDataGridViewTextBoxColumn.DataPropertyName = "PatientName"
-        Me.PatientNameDataGridViewTextBoxColumn.HeaderText = "PatientName"
-        Me.PatientNameDataGridViewTextBoxColumn.Name = "PatientNameDataGridViewTextBoxColumn"
-        Me.PatientNameDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DentalServiceDataGridViewTextBoxColumn
-        '
-        Me.DentalServiceDataGridViewTextBoxColumn.DataPropertyName = "DentalService"
-        Me.DentalServiceDataGridViewTextBoxColumn.HeaderText = "DentalService"
-        Me.DentalServiceDataGridViewTextBoxColumn.Name = "DentalServiceDataGridViewTextBoxColumn"
-        Me.DentalServiceDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ServiceDateDataGridViewTextBoxColumn
-        '
-        Me.ServiceDateDataGridViewTextBoxColumn.DataPropertyName = "ServiceDate"
-        Me.ServiceDateDataGridViewTextBoxColumn.HeaderText = "ServiceDate"
-        Me.ServiceDateDataGridViewTextBoxColumn.Name = "ServiceDateDataGridViewTextBoxColumn"
-        Me.ServiceDateDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ToothNumberDataGridViewTextBoxColumn
-        '
-        Me.ToothNumberDataGridViewTextBoxColumn.DataPropertyName = "ToothNumber"
-        Me.ToothNumberDataGridViewTextBoxColumn.HeaderText = "ToothNumber"
-        Me.ToothNumberDataGridViewTextBoxColumn.Name = "ToothNumberDataGridViewTextBoxColumn"
-        Me.ToothNumberDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ServiceAmountDataGridViewTextBoxColumn
-        '
-        Me.ServiceAmountDataGridViewTextBoxColumn.DataPropertyName = "ServiceAmount"
-        Me.ServiceAmountDataGridViewTextBoxColumn.HeaderText = "ServiceAmount"
-        Me.ServiceAmountDataGridViewTextBoxColumn.Name = "ServiceAmountDataGridViewTextBoxColumn"
-        Me.ServiceAmountDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DentistDataGridViewTextBoxColumn
-        '
-        Me.DentistDataGridViewTextBoxColumn.DataPropertyName = "Dentist"
-        Me.DentistDataGridViewTextBoxColumn.HeaderText = "Dentist"
-        Me.DentistDataGridViewTextBoxColumn.Name = "DentistDataGridViewTextBoxColumn"
-        Me.DentistDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PatientAddressDataGridViewTextBoxColumn
-        '
-        Me.PatientAddressDataGridViewTextBoxColumn.DataPropertyName = "PatientAddress"
-        Me.PatientAddressDataGridViewTextBoxColumn.HeaderText = "PatientAddress"
-        Me.PatientAddressDataGridViewTextBoxColumn.Name = "PatientAddressDataGridViewTextBoxColumn"
-        Me.PatientAddressDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'MedsQueueDBBindingSource
-        '
-        Me.MedsQueueDBBindingSource.DataMember = "MedsQueueDB"
-        Me.MedsQueueDBBindingSource.DataSource = Me.ToothImageDBDataSet
-        '
-        'ToothImageDBDataSet
-        '
-        Me.ToothImageDBDataSet.DataSetName = "ToothImageDBDataSet"
-        Me.ToothImageDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.PLDBDataSet.DataSetName = "PLDBDataSet"
+        Me.PLDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'txtMedBalance
         '
@@ -215,9 +214,9 @@ Partial Class frmMed
         Me.lblMed.TabIndex = 0
         Me.lblMed.Text = "Medication:"
         '
-        'MedsQueueDBTableAdapter
+        'MedQueueTableAdapter
         '
-        Me.MedsQueueDBTableAdapter.ClearBeforeFill = True
+        Me.MedQueueTableAdapter.ClearBeforeFill = True
         '
         'frmMed
         '
@@ -239,8 +238,8 @@ Partial Class frmMed
         Me.bgMed01.ResumeLayout(False)
         Me.bgMed01.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MedsQueueDBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ToothImageDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MedQueueBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PLDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -252,16 +251,15 @@ Partial Class frmMed
     Friend WithEvents txtMedBalance As System.Windows.Forms.TextBox
     Friend WithEvents lblMedBalance As System.Windows.Forms.Label
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents PLDBDataSet As ProjeckMilk.PLDBDataSet
+    Friend WithEvents MedQueueBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents MedQueueTableAdapter As ProjeckMilk.PLDBDataSetTableAdapters.medQueueTableAdapter
+    Friend WithEvents IDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DentalServiceDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServiceDateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ToothNumberDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServiceAmountDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PDentistDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents pAddress As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ToothImageDBDataSet As ToothImageDBDataSet
-    Friend WithEvents MedsQueueDBBindingSource As BindingSource
-    Friend WithEvents MedsQueueDBTableAdapter As ToothImageDBDataSetTableAdapters.MedsQueueDBTableAdapter
-    Friend WithEvents MedsQueueIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PatientNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DentalServiceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ServiceDateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ToothNumberDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ServiceAmountDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DentistDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PatientAddressDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class

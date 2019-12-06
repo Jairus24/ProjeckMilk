@@ -32,24 +32,24 @@ Partial Class frmPatientSearch
         Me.btnAppt = New System.Windows.Forms.Button()
         Me.txtPSname = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.PatientDBBindingSourceSQL = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ToothImageDBDataSet = New ProjeckMilk.ToothImageDBDataSet()
+        Me.IDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PLastNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PFirstNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PMiddleNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PFullNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PAddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PContactDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PBDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.POccupationDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PStatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PatientDBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PLDBDataSet = New ProjeckMilk.PLDBDataSet()
         Me.lblPSname = New System.Windows.Forms.Label()
-        Me.PatientDBTableAdapterSQL = New ProjeckMilk.ToothImageDBDataSetTableAdapters.PatientDBTableAdapter()
-        Me.PatientID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LastNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FirstNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MiddleNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FullNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PatientAddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ContactDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BirthdayDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OccupationDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CivilStatusDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PatientDBTableAdapter = New ProjeckMilk.PLDBDataSetTableAdapters.patientDBTableAdapter()
         Me.gbPSname.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PatientDBBindingSourceSQL, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ToothImageDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PatientDBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PLDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnPSShow
@@ -132,8 +132,8 @@ Partial Class frmPatientSearch
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PatientID, Me.LastNameDataGridViewTextBoxColumn, Me.FirstNameDataGridViewTextBoxColumn, Me.MiddleNameDataGridViewTextBoxColumn, Me.FullNameDataGridViewTextBoxColumn, Me.PatientAddressDataGridViewTextBoxColumn, Me.ContactDataGridViewTextBoxColumn, Me.BirthdayDataGridViewTextBoxColumn, Me.OccupationDataGridViewTextBoxColumn, Me.CivilStatusDataGridViewTextBoxColumn})
-        Me.DataGridView1.DataSource = Me.PatientDBBindingSourceSQL
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDDataGridViewTextBoxColumn, Me.PLastNameDataGridViewTextBoxColumn, Me.PFirstNameDataGridViewTextBoxColumn, Me.PMiddleNameDataGridViewTextBoxColumn, Me.PFullNameDataGridViewTextBoxColumn, Me.PAddressDataGridViewTextBoxColumn, Me.PContactDataGridViewTextBoxColumn, Me.PBDateDataGridViewTextBoxColumn, Me.POccupationDataGridViewTextBoxColumn, Me.PStatusDataGridViewTextBoxColumn})
+        Me.DataGridView1.DataSource = Me.PatientDBBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(16, 94)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
@@ -147,15 +147,105 @@ Partial Class frmPatientSearch
         Me.DataGridView1.TabIndex = 11
         Me.DataGridView1.TabStop = False
         '
-        'PatientDBBindingSourceSQL
+        'IDDataGridViewTextBoxColumn
         '
-        Me.PatientDBBindingSourceSQL.DataMember = "PatientDB"
-        Me.PatientDBBindingSourceSQL.DataSource = Me.ToothImageDBDataSet
+        Me.IDDataGridViewTextBoxColumn.DataPropertyName = "ID"
+        Me.IDDataGridViewTextBoxColumn.Frozen = True
+        Me.IDDataGridViewTextBoxColumn.HeaderText = "ID"
+        Me.IDDataGridViewTextBoxColumn.Name = "IDDataGridViewTextBoxColumn"
+        Me.IDDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IDDataGridViewTextBoxColumn.Visible = False
         '
-        'ToothImageDBDataSet
+        'PLastNameDataGridViewTextBoxColumn
         '
-        Me.ToothImageDBDataSet.DataSetName = "ToothImageDBDataSet"
-        Me.ToothImageDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.PLastNameDataGridViewTextBoxColumn.DataPropertyName = "pLastName"
+        Me.PLastNameDataGridViewTextBoxColumn.Frozen = True
+        Me.PLastNameDataGridViewTextBoxColumn.HeaderText = "pLastName"
+        Me.PLastNameDataGridViewTextBoxColumn.Name = "PLastNameDataGridViewTextBoxColumn"
+        Me.PLastNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PLastNameDataGridViewTextBoxColumn.Visible = False
+        '
+        'PFirstNameDataGridViewTextBoxColumn
+        '
+        Me.PFirstNameDataGridViewTextBoxColumn.DataPropertyName = "pFirstName"
+        Me.PFirstNameDataGridViewTextBoxColumn.Frozen = True
+        Me.PFirstNameDataGridViewTextBoxColumn.HeaderText = "pFirstName"
+        Me.PFirstNameDataGridViewTextBoxColumn.Name = "PFirstNameDataGridViewTextBoxColumn"
+        Me.PFirstNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PFirstNameDataGridViewTextBoxColumn.Visible = False
+        '
+        'PMiddleNameDataGridViewTextBoxColumn
+        '
+        Me.PMiddleNameDataGridViewTextBoxColumn.DataPropertyName = "pMiddleName"
+        Me.PMiddleNameDataGridViewTextBoxColumn.Frozen = True
+        Me.PMiddleNameDataGridViewTextBoxColumn.HeaderText = "pMiddleName"
+        Me.PMiddleNameDataGridViewTextBoxColumn.Name = "PMiddleNameDataGridViewTextBoxColumn"
+        Me.PMiddleNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PMiddleNameDataGridViewTextBoxColumn.Visible = False
+        '
+        'PFullNameDataGridViewTextBoxColumn
+        '
+        Me.PFullNameDataGridViewTextBoxColumn.DataPropertyName = "pFullName"
+        Me.PFullNameDataGridViewTextBoxColumn.Frozen = True
+        Me.PFullNameDataGridViewTextBoxColumn.HeaderText = "Patient Name"
+        Me.PFullNameDataGridViewTextBoxColumn.Name = "PFullNameDataGridViewTextBoxColumn"
+        Me.PFullNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PFullNameDataGridViewTextBoxColumn.Width = 251
+        '
+        'PAddressDataGridViewTextBoxColumn
+        '
+        Me.PAddressDataGridViewTextBoxColumn.DataPropertyName = "pAddress"
+        Me.PAddressDataGridViewTextBoxColumn.Frozen = True
+        Me.PAddressDataGridViewTextBoxColumn.HeaderText = "Address"
+        Me.PAddressDataGridViewTextBoxColumn.Name = "PAddressDataGridViewTextBoxColumn"
+        Me.PAddressDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PAddressDataGridViewTextBoxColumn.Width = 350
+        '
+        'PContactDataGridViewTextBoxColumn
+        '
+        Me.PContactDataGridViewTextBoxColumn.DataPropertyName = "pContact"
+        Me.PContactDataGridViewTextBoxColumn.Frozen = True
+        Me.PContactDataGridViewTextBoxColumn.HeaderText = "pContact"
+        Me.PContactDataGridViewTextBoxColumn.Name = "PContactDataGridViewTextBoxColumn"
+        Me.PContactDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PContactDataGridViewTextBoxColumn.Visible = False
+        '
+        'PBDateDataGridViewTextBoxColumn
+        '
+        Me.PBDateDataGridViewTextBoxColumn.DataPropertyName = "pBDate"
+        Me.PBDateDataGridViewTextBoxColumn.Frozen = True
+        Me.PBDateDataGridViewTextBoxColumn.HeaderText = "pBDate"
+        Me.PBDateDataGridViewTextBoxColumn.Name = "PBDateDataGridViewTextBoxColumn"
+        Me.PBDateDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PBDateDataGridViewTextBoxColumn.Visible = False
+        '
+        'POccupationDataGridViewTextBoxColumn
+        '
+        Me.POccupationDataGridViewTextBoxColumn.DataPropertyName = "pOccupation"
+        Me.POccupationDataGridViewTextBoxColumn.Frozen = True
+        Me.POccupationDataGridViewTextBoxColumn.HeaderText = "pOccupation"
+        Me.POccupationDataGridViewTextBoxColumn.Name = "POccupationDataGridViewTextBoxColumn"
+        Me.POccupationDataGridViewTextBoxColumn.ReadOnly = True
+        Me.POccupationDataGridViewTextBoxColumn.Visible = False
+        '
+        'PStatusDataGridViewTextBoxColumn
+        '
+        Me.PStatusDataGridViewTextBoxColumn.DataPropertyName = "pStatus"
+        Me.PStatusDataGridViewTextBoxColumn.Frozen = True
+        Me.PStatusDataGridViewTextBoxColumn.HeaderText = "pStatus"
+        Me.PStatusDataGridViewTextBoxColumn.Name = "PStatusDataGridViewTextBoxColumn"
+        Me.PStatusDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PStatusDataGridViewTextBoxColumn.Visible = False
+        '
+        'PatientDBBindingSource
+        '
+        Me.PatientDBBindingSource.DataMember = "patientDB"
+        Me.PatientDBBindingSource.DataSource = Me.PLDBDataSet
+        '
+        'PLDBDataSet
+        '
+        Me.PLDBDataSet.DataSetName = "PLDBDataSet"
+        Me.PLDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'lblPSname
         '
@@ -168,89 +258,9 @@ Partial Class frmPatientSearch
         Me.lblPSname.TabIndex = 9
         Me.lblPSname.Text = "Patient Name:"
         '
-        'PatientDBTableAdapterSQL
+        'PatientDBTableAdapter
         '
-        Me.PatientDBTableAdapterSQL.ClearBeforeFill = True
-        '
-        'PatientID
-        '
-        Me.PatientID.DataPropertyName = "PatientID"
-        Me.PatientID.HeaderText = "PatientID"
-        Me.PatientID.Name = "PatientID"
-        Me.PatientID.ReadOnly = True
-        Me.PatientID.Visible = False
-        '
-        'LastNameDataGridViewTextBoxColumn
-        '
-        Me.LastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName"
-        Me.LastNameDataGridViewTextBoxColumn.HeaderText = "LastName"
-        Me.LastNameDataGridViewTextBoxColumn.Name = "LastNameDataGridViewTextBoxColumn"
-        Me.LastNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.LastNameDataGridViewTextBoxColumn.Visible = False
-        '
-        'FirstNameDataGridViewTextBoxColumn
-        '
-        Me.FirstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName"
-        Me.FirstNameDataGridViewTextBoxColumn.HeaderText = "FirstName"
-        Me.FirstNameDataGridViewTextBoxColumn.Name = "FirstNameDataGridViewTextBoxColumn"
-        Me.FirstNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FirstNameDataGridViewTextBoxColumn.Visible = False
-        '
-        'MiddleNameDataGridViewTextBoxColumn
-        '
-        Me.MiddleNameDataGridViewTextBoxColumn.DataPropertyName = "MiddleName"
-        Me.MiddleNameDataGridViewTextBoxColumn.HeaderText = "MiddleName"
-        Me.MiddleNameDataGridViewTextBoxColumn.Name = "MiddleNameDataGridViewTextBoxColumn"
-        Me.MiddleNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.MiddleNameDataGridViewTextBoxColumn.Visible = False
-        '
-        'FullNameDataGridViewTextBoxColumn
-        '
-        Me.FullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName"
-        Me.FullNameDataGridViewTextBoxColumn.HeaderText = "Patient Name"
-        Me.FullNameDataGridViewTextBoxColumn.Name = "FullNameDataGridViewTextBoxColumn"
-        Me.FullNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FullNameDataGridViewTextBoxColumn.Width = 250
-        '
-        'PatientAddressDataGridViewTextBoxColumn
-        '
-        Me.PatientAddressDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.PatientAddressDataGridViewTextBoxColumn.DataPropertyName = "PatientAddress"
-        Me.PatientAddressDataGridViewTextBoxColumn.HeaderText = "Patient Address"
-        Me.PatientAddressDataGridViewTextBoxColumn.Name = "PatientAddressDataGridViewTextBoxColumn"
-        Me.PatientAddressDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ContactDataGridViewTextBoxColumn
-        '
-        Me.ContactDataGridViewTextBoxColumn.DataPropertyName = "Contact"
-        Me.ContactDataGridViewTextBoxColumn.HeaderText = "Contact"
-        Me.ContactDataGridViewTextBoxColumn.Name = "ContactDataGridViewTextBoxColumn"
-        Me.ContactDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ContactDataGridViewTextBoxColumn.Visible = False
-        '
-        'BirthdayDataGridViewTextBoxColumn
-        '
-        Me.BirthdayDataGridViewTextBoxColumn.DataPropertyName = "Birthday"
-        Me.BirthdayDataGridViewTextBoxColumn.HeaderText = "Birthday"
-        Me.BirthdayDataGridViewTextBoxColumn.Name = "BirthdayDataGridViewTextBoxColumn"
-        Me.BirthdayDataGridViewTextBoxColumn.ReadOnly = True
-        Me.BirthdayDataGridViewTextBoxColumn.Visible = False
-        '
-        'OccupationDataGridViewTextBoxColumn
-        '
-        Me.OccupationDataGridViewTextBoxColumn.DataPropertyName = "Occupation"
-        Me.OccupationDataGridViewTextBoxColumn.HeaderText = "Occupation"
-        Me.OccupationDataGridViewTextBoxColumn.Name = "OccupationDataGridViewTextBoxColumn"
-        Me.OccupationDataGridViewTextBoxColumn.ReadOnly = True
-        Me.OccupationDataGridViewTextBoxColumn.Visible = False
-        '
-        'CivilStatusDataGridViewTextBoxColumn
-        '
-        Me.CivilStatusDataGridViewTextBoxColumn.DataPropertyName = "CivilStatus"
-        Me.CivilStatusDataGridViewTextBoxColumn.HeaderText = "CivilStatus"
-        Me.CivilStatusDataGridViewTextBoxColumn.Name = "CivilStatusDataGridViewTextBoxColumn"
-        Me.CivilStatusDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CivilStatusDataGridViewTextBoxColumn.Visible = False
+        Me.PatientDBTableAdapter.ClearBeforeFill = True
         '
         'frmPatientSearch
         '
@@ -271,8 +281,8 @@ Partial Class frmPatientSearch
         Me.gbPSname.ResumeLayout(False)
         Me.gbPSname.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PatientDBBindingSourceSQL, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ToothImageDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PatientDBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PLDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -286,17 +296,17 @@ Partial Class frmPatientSearch
     Friend WithEvents btnAppt As System.Windows.Forms.Button
     Friend WithEvents btnSearchDelete As System.Windows.Forms.Button
     Friend WithEvents btnEditRecord As System.Windows.Forms.Button
-    Friend WithEvents ToothImageDBDataSet As ToothImageDBDataSet
-    Friend WithEvents PatientDBBindingSourceSQL As BindingSource
-    Friend WithEvents PatientDBTableAdapterSQL As ToothImageDBDataSetTableAdapters.PatientDBTableAdapter
-    Friend WithEvents PatientID As DataGridViewTextBoxColumn
-    Friend WithEvents LastNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FirstNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents MiddleNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FullNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PatientAddressDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ContactDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents BirthdayDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents OccupationDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CivilStatusDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PLDBDataSet As ProjeckMilk.PLDBDataSet
+    Friend WithEvents PatientDBBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents PatientDBTableAdapter As ProjeckMilk.PLDBDataSetTableAdapters.patientDBTableAdapter
+    Friend WithEvents IDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PLastNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PFirstNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PMiddleNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PFullNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PAddressDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PContactDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PBDateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents POccupationDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PStatusDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

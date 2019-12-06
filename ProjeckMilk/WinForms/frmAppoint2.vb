@@ -1,6 +1,6 @@
 ﻿Public Class frmAppoint2
     Dim den As String
-    Dim a As String = ""
+    Dim a As String = "a"
     Private Sub frmAppoint2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         dtpAdd02.Format = DateTimePickerFormat.Custom
         dtpAdd02.CustomFormat = "hh:mm tt"
@@ -18,10 +18,10 @@
             MsgBox("You cannot leave a category empty! Please fill in with proper information.", vbExclamation, "Warning!")
         Else
             Try
-                frmAppoint.AppointmentsDBTableAdapter.Insert(frmPatientSearch.DataGridView1.CurrentRow.Cells(4).Value.ToString(), dtpAdd01.Value.ToShortDateString(), dtpAdd02.Value.ToShortTimeString(), a, den, frmPatientSearch.DataGridView1.CurrentRow.Cells(5).Value.ToString())
-                frmAppoint.AppointmentsDBTableAdapter.Fill(frmAppoint.ToothImageDBDataSet.AppointmentsDB)
+                frmAppoint.ApptmntTableAdapter.Insert(frmPatientSearch.DataGridView1.CurrentRow.Cells(4).Value.ToString(), dtpAdd01.Value.ToShortDateString(), dtpAdd02.Value.ToShortTimeString(), a, den, frmPatientSearch.DataGridView1.CurrentRow.Cells(5).Value.ToString())
+                frmAppoint.ApptmntTableAdapter.Fill(frmAppoint.PLDBDataSet.apptmnt)
             Catch ex As Exception
-                MsgBox("Cannot access database file. Please check the database connection.", vbCritical, "Database Error")
+                MsgBox("Cannot access database file. Please check if the Access 2010 Database Engine is installed.", vbCritical, "Database Error")
                 End
             End Try
             If frmAppoint.DataGridView1.Rows.Count > 0 Then

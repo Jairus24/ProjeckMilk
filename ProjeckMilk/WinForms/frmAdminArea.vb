@@ -3,10 +3,9 @@ Imports System.IO
 Public Class frmAdminArea
 
     Private Sub frmAdminArea_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'ToothImageDBDataSet.AdminDB' table. You can move, or remove it, as needed.
         'TODO: This line of code loads data into the 'PLDBDataSet.adminDB' table. You can move, or remove it, as needed.
         Try
-            Me.AdminDBTableAdapterSQL.Fill(Me.ToothImageDBDataSet.AdminDB)
+            Me.AdminDBTableAdapter.Fill(Me.PLDBDataSet.adminDB)
         Catch ex As Exception
             MsgBox("Cannot access database file. Please check if the Access Database Engine is installed.", vbCritical, "Database Error")
             End
@@ -47,8 +46,8 @@ Public Class frmAdminArea
                 DataGridView1.CurrentRow.Cells(1).Value = mtxtAdminNP.Text
                 ValidateChildren()
                 DataGridView1.EndEdit()
-                AdminDBTableAdapterSQL.Update(Me.ToothImageDBDataSet.AdminDB)
-                AdminDBTableAdapterSQL.Fill(Me.ToothImageDBDataSet.AdminDB)
+                AdminDBTableAdapter.Update(Me.PLDBDataSet.adminDB)
+                AdminDBTableAdapter.Fill(Me.PLDBDataSet.adminDB)
                 MsgBox("Administrator account information has been changed.", vbInformation, "Admin Change")
                 frmLogin.n = txtNewUN.Text
                 frmLogin.txtLoginPass.Text = ""

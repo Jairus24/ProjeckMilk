@@ -23,9 +23,6 @@ Partial Class frmPatientProfile
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPatientProfile))
         Me.lblPFname = New System.Windows.Forms.Label()
         Me.lblPFaddress = New System.Windows.Forms.Label()
@@ -39,33 +36,31 @@ Partial Class frmPatientProfile
         Me.lblPFOccupationF = New System.Windows.Forms.Label()
         Me.v = New System.Windows.Forms.Label()
         Me.lblPFageF = New System.Windows.Forms.Label()
+        Me.PatientDBTableAdapter = New ProjeckMilk.PLDBDataSetTableAdapters.patientDBTableAdapter()
         Me.lblPFmaritalF = New System.Windows.Forms.Label()
         Me.gbPF01 = New System.Windows.Forms.GroupBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.ServiceRecIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PatientNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DentalServiceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ServiceDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToothNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MedsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DentistDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ServiceAmountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RemainingBalanceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AmountPaidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PatientAddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServiceRecordDBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ToothImageDBDataSet = New ProjeckMilk.ToothImageDBDataSet()
+        Me.PBalanceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PDentistDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PPaidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServiceRecordBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PldbDataSet = New ProjeckMilk.PLDBDataSet()
         Me.btnPFclose = New System.Windows.Forms.Button()
         Me.btnPFadd = New System.Windows.Forms.Button()
         Me.txtPFsh = New System.Windows.Forms.Label()
-        Me.ServiceRecordDBTableAdapter = New ProjeckMilk.ToothImageDBDataSetTableAdapters.ServiceRecordDBTableAdapter()
-        Me.lblPFBdate = New System.Windows.Forms.Label()
-        Me.lblPFBdateF = New System.Windows.Forms.Label()
+        Me.ServiceRecordTableAdapter = New ProjeckMilk.PLDBDataSetTableAdapters.serviceRecordTableAdapter()
         Me.gbPF01.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ServiceRecordDBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ToothImageDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ServiceRecordBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PldbDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblPFname
@@ -95,18 +90,18 @@ Partial Class frmPatientProfile
         Me.lblPFcontact.AutoSize = True
         Me.lblPFcontact.BackColor = System.Drawing.Color.Transparent
         Me.lblPFcontact.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPFcontact.Location = New System.Drawing.Point(384, 100)
+        Me.lblPFcontact.Location = New System.Drawing.Point(45, 132)
         Me.lblPFcontact.Name = "lblPFcontact"
-        Me.lblPFcontact.Size = New System.Drawing.Size(144, 20)
+        Me.lblPFcontact.Size = New System.Drawing.Size(109, 20)
         Me.lblPFcontact.TabIndex = 2
-        Me.lblPFcontact.Text = "Contact Number:"
+        Me.lblPFcontact.Text = "Contact No.:"
         '
         'lblPFoccupation
         '
         Me.lblPFoccupation.AutoSize = True
         Me.lblPFoccupation.BackColor = System.Drawing.Color.Transparent
         Me.lblPFoccupation.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPFoccupation.Location = New System.Drawing.Point(423, 80)
+        Me.lblPFoccupation.Location = New System.Drawing.Point(49, 112)
         Me.lblPFoccupation.Name = "lblPFoccupation"
         Me.lblPFoccupation.Size = New System.Drawing.Size(105, 20)
         Me.lblPFoccupation.TabIndex = 3
@@ -117,7 +112,7 @@ Partial Class frmPatientProfile
         Me.lblPFage.AutoSize = True
         Me.lblPFage.BackColor = System.Drawing.Color.Transparent
         Me.lblPFage.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPFage.Location = New System.Drawing.Point(95, 80)
+        Me.lblPFage.Location = New System.Drawing.Point(108, 72)
         Me.lblPFage.Name = "lblPFage"
         Me.lblPFage.Size = New System.Drawing.Size(46, 20)
         Me.lblPFage.TabIndex = 4
@@ -128,7 +123,7 @@ Partial Class frmPatientProfile
         Me.lblPFmarital.AutoSize = True
         Me.lblPFmarital.BackColor = System.Drawing.Color.Transparent
         Me.lblPFmarital.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPFmarital.Location = New System.Drawing.Point(15, 100)
+        Me.lblPFmarital.Location = New System.Drawing.Point(28, 92)
         Me.lblPFmarital.Name = "lblPFmarital"
         Me.lblPFmarital.Size = New System.Drawing.Size(126, 20)
         Me.lblPFmarital.TabIndex = 5
@@ -159,7 +154,7 @@ Partial Class frmPatientProfile
         Me.lblPFcontactF.AutoSize = True
         Me.lblPFcontactF.BackColor = System.Drawing.Color.Transparent
         Me.lblPFcontactF.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPFcontactF.Location = New System.Drawing.Point(534, 100)
+        Me.lblPFcontactF.Location = New System.Drawing.Point(160, 132)
         Me.lblPFcontactF.Name = "lblPFcontactF"
         Me.lblPFcontactF.Size = New System.Drawing.Size(0, 20)
         Me.lblPFcontactF.TabIndex = 8
@@ -169,7 +164,7 @@ Partial Class frmPatientProfile
         Me.lblPFOccupationF.AutoSize = True
         Me.lblPFOccupationF.BackColor = System.Drawing.Color.Transparent
         Me.lblPFOccupationF.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPFOccupationF.Location = New System.Drawing.Point(534, 80)
+        Me.lblPFOccupationF.Location = New System.Drawing.Point(160, 112)
         Me.lblPFOccupationF.Name = "lblPFOccupationF"
         Me.lblPFOccupationF.Size = New System.Drawing.Size(0, 20)
         Me.lblPFOccupationF.TabIndex = 9
@@ -188,17 +183,21 @@ Partial Class frmPatientProfile
         Me.lblPFageF.AutoSize = True
         Me.lblPFageF.BackColor = System.Drawing.Color.Transparent
         Me.lblPFageF.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPFageF.Location = New System.Drawing.Point(147, 80)
+        Me.lblPFageF.Location = New System.Drawing.Point(160, 72)
         Me.lblPFageF.Name = "lblPFageF"
         Me.lblPFageF.Size = New System.Drawing.Size(0, 20)
         Me.lblPFageF.TabIndex = 11
+        '
+        'PatientDBTableAdapter
+        '
+        Me.PatientDBTableAdapter.ClearBeforeFill = True
         '
         'lblPFmaritalF
         '
         Me.lblPFmaritalF.AutoSize = True
         Me.lblPFmaritalF.BackColor = System.Drawing.Color.Transparent
         Me.lblPFmaritalF.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPFmaritalF.Location = New System.Drawing.Point(147, 100)
+        Me.lblPFmaritalF.Location = New System.Drawing.Point(160, 92)
         Me.lblPFmaritalF.Name = "lblPFmaritalF"
         Me.lblPFmaritalF.Size = New System.Drawing.Size(0, 20)
         Me.lblPFmaritalF.TabIndex = 12
@@ -206,20 +205,10 @@ Partial Class frmPatientProfile
         'gbPF01
         '
         Me.gbPF01.BackColor = System.Drawing.Color.Transparent
-        Me.gbPF01.Controls.Add(Me.lblPFmaritalF)
-        Me.gbPF01.Controls.Add(Me.lblPFBdateF)
-        Me.gbPF01.Controls.Add(Me.lblPFBdate)
-        Me.gbPF01.Controls.Add(Me.lblPFageF)
         Me.gbPF01.Controls.Add(Me.DataGridView1)
         Me.gbPF01.Controls.Add(Me.btnPFclose)
         Me.gbPF01.Controls.Add(Me.btnPFadd)
-        Me.gbPF01.Controls.Add(Me.lblPFcontactF)
-        Me.gbPF01.Controls.Add(Me.lblPFage)
-        Me.gbPF01.Controls.Add(Me.lblPFOccupationF)
-        Me.gbPF01.Controls.Add(Me.lblPFmarital)
         Me.gbPF01.Controls.Add(Me.txtPFsh)
-        Me.gbPF01.Controls.Add(Me.lblPFoccupation)
-        Me.gbPF01.Controls.Add(Me.lblPFcontact)
         Me.gbPF01.Location = New System.Drawing.Point(13, 12)
         Me.gbPF01.Name = "gbPF01"
         Me.gbPF01.Size = New System.Drawing.Size(866, 456)
@@ -234,8 +223,8 @@ Partial Class frmPatientProfile
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ServiceRecIDDataGridViewTextBoxColumn, Me.PatientNameDataGridViewTextBoxColumn, Me.DentalServiceDataGridViewTextBoxColumn, Me.ServiceDateDataGridViewTextBoxColumn, Me.ToothNumberDataGridViewTextBoxColumn, Me.MedsDataGridViewTextBoxColumn, Me.DentistDataGridViewTextBoxColumn, Me.ServiceAmountDataGridViewTextBoxColumn, Me.RemainingBalanceDataGridViewTextBoxColumn, Me.AmountPaidDataGridViewTextBoxColumn, Me.DataGridViewTextBoxColumn1, Me.PatientAddressDataGridViewTextBoxColumn})
-        Me.DataGridView1.DataSource = Me.ServiceRecordDBBindingSource
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDDataGridViewTextBoxColumn, Me.PNameDataGridViewTextBoxColumn, Me.DentalServiceDataGridViewTextBoxColumn, Me.ServiceDateDataGridViewTextBoxColumn, Me.ToothNumberDataGridViewTextBoxColumn, Me.MedDataGridViewTextBoxColumn, Me.ServiceAmountDataGridViewTextBoxColumn, Me.PBalanceDataGridViewTextBoxColumn, Me.PDentistDataGridViewTextBoxColumn, Me.PPaidDataGridViewTextBoxColumn, Me.pAddress})
+        Me.DataGridView1.DataSource = Me.ServiceRecordBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(19, 188)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
@@ -245,136 +234,145 @@ Partial Class frmPatientProfile
         Me.DataGridView1.Size = New System.Drawing.Size(823, 262)
         Me.DataGridView1.TabIndex = 19
         '
-        'ServiceRecIDDataGridViewTextBoxColumn
+        'IDDataGridViewTextBoxColumn
         '
-        Me.ServiceRecIDDataGridViewTextBoxColumn.DataPropertyName = "ServiceRecID"
-        Me.ServiceRecIDDataGridViewTextBoxColumn.HeaderText = "ServiceRecID"
-        Me.ServiceRecIDDataGridViewTextBoxColumn.Name = "ServiceRecIDDataGridViewTextBoxColumn"
-        Me.ServiceRecIDDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServiceRecIDDataGridViewTextBoxColumn.Visible = False
+        Me.IDDataGridViewTextBoxColumn.DataPropertyName = "ID"
+        Me.IDDataGridViewTextBoxColumn.Frozen = True
+        Me.IDDataGridViewTextBoxColumn.HeaderText = "ID"
+        Me.IDDataGridViewTextBoxColumn.Name = "IDDataGridViewTextBoxColumn"
+        Me.IDDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.IDDataGridViewTextBoxColumn.Visible = False
         '
-        'PatientNameDataGridViewTextBoxColumn
+        'PNameDataGridViewTextBoxColumn
         '
-        Me.PatientNameDataGridViewTextBoxColumn.DataPropertyName = "PatientName"
-        Me.PatientNameDataGridViewTextBoxColumn.HeaderText = "PatientName"
-        Me.PatientNameDataGridViewTextBoxColumn.Name = "PatientNameDataGridViewTextBoxColumn"
-        Me.PatientNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PatientNameDataGridViewTextBoxColumn.Visible = False
+        Me.PNameDataGridViewTextBoxColumn.DataPropertyName = "pName"
+        Me.PNameDataGridViewTextBoxColumn.Frozen = True
+        Me.PNameDataGridViewTextBoxColumn.HeaderText = "pName"
+        Me.PNameDataGridViewTextBoxColumn.Name = "PNameDataGridViewTextBoxColumn"
+        Me.PNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PNameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.PNameDataGridViewTextBoxColumn.Visible = False
         '
         'DentalServiceDataGridViewTextBoxColumn
         '
-        Me.DentalServiceDataGridViewTextBoxColumn.DataPropertyName = "DentalService"
+        Me.DentalServiceDataGridViewTextBoxColumn.DataPropertyName = "dentalService"
+        Me.DentalServiceDataGridViewTextBoxColumn.Frozen = True
         Me.DentalServiceDataGridViewTextBoxColumn.HeaderText = "Dental Service"
         Me.DentalServiceDataGridViewTextBoxColumn.Name = "DentalServiceDataGridViewTextBoxColumn"
         Me.DentalServiceDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DentalServiceDataGridViewTextBoxColumn.Width = 150
+        Me.DentalServiceDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DentalServiceDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.DentalServiceDataGridViewTextBoxColumn.Width = 200
         '
         'ServiceDateDataGridViewTextBoxColumn
         '
-        Me.ServiceDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ServiceDateDataGridViewTextBoxColumn.DataPropertyName = "ServiceDate"
-        Me.ServiceDateDataGridViewTextBoxColumn.HeaderText = "Date"
+        Me.ServiceDateDataGridViewTextBoxColumn.DataPropertyName = "serviceDate"
+        Me.ServiceDateDataGridViewTextBoxColumn.Frozen = True
+        Me.ServiceDateDataGridViewTextBoxColumn.HeaderText = "Service Date"
         Me.ServiceDateDataGridViewTextBoxColumn.Name = "ServiceDateDataGridViewTextBoxColumn"
         Me.ServiceDateDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServiceDateDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'ToothNumberDataGridViewTextBoxColumn
         '
-        Me.ToothNumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ToothNumberDataGridViewTextBoxColumn.DataPropertyName = "ToothNumber"
-        Me.ToothNumberDataGridViewTextBoxColumn.HeaderText = "Tooth No."
+        Me.ToothNumberDataGridViewTextBoxColumn.DataPropertyName = "toothNumber"
+        Me.ToothNumberDataGridViewTextBoxColumn.Frozen = True
+        Me.ToothNumberDataGridViewTextBoxColumn.HeaderText = "Tooth Number"
         Me.ToothNumberDataGridViewTextBoxColumn.Name = "ToothNumberDataGridViewTextBoxColumn"
         Me.ToothNumberDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ToothNumberDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.ToothNumberDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
-        'MedsDataGridViewTextBoxColumn
+        'MedDataGridViewTextBoxColumn
         '
-        Me.MedsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.MedsDataGridViewTextBoxColumn.DataPropertyName = "Meds"
-        Me.MedsDataGridViewTextBoxColumn.HeaderText = "Meds"
-        Me.MedsDataGridViewTextBoxColumn.Name = "MedsDataGridViewTextBoxColumn"
-        Me.MedsDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DentistDataGridViewTextBoxColumn
-        '
-        Me.DentistDataGridViewTextBoxColumn.DataPropertyName = "Dentist"
-        Me.DentistDataGridViewTextBoxColumn.HeaderText = "Dentist"
-        Me.DentistDataGridViewTextBoxColumn.Name = "DentistDataGridViewTextBoxColumn"
-        Me.DentistDataGridViewTextBoxColumn.ReadOnly = True
+        Me.MedDataGridViewTextBoxColumn.DataPropertyName = "med"
+        Me.MedDataGridViewTextBoxColumn.Frozen = True
+        Me.MedDataGridViewTextBoxColumn.HeaderText = "Med"
+        Me.MedDataGridViewTextBoxColumn.Name = "MedDataGridViewTextBoxColumn"
+        Me.MedDataGridViewTextBoxColumn.ReadOnly = True
+        Me.MedDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.MedDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.MedDataGridViewTextBoxColumn.Width = 103
         '
         'ServiceAmountDataGridViewTextBoxColumn
         '
-        Me.ServiceAmountDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ServiceAmountDataGridViewTextBoxColumn.DataPropertyName = "ServiceAmount"
-        DataGridViewCellStyle1.Format = "C2"
-        DataGridViewCellStyle1.NullValue = "0.00"
-        Me.ServiceAmountDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
+        Me.ServiceAmountDataGridViewTextBoxColumn.DataPropertyName = "serviceAmount"
+        Me.ServiceAmountDataGridViewTextBoxColumn.Frozen = True
         Me.ServiceAmountDataGridViewTextBoxColumn.HeaderText = "Amount"
         Me.ServiceAmountDataGridViewTextBoxColumn.Name = "ServiceAmountDataGridViewTextBoxColumn"
         Me.ServiceAmountDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServiceAmountDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.ServiceAmountDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.ServiceAmountDataGridViewTextBoxColumn.Width = 75
         '
-        'RemainingBalanceDataGridViewTextBoxColumn
+        'PBalanceDataGridViewTextBoxColumn
         '
-        Me.RemainingBalanceDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.RemainingBalanceDataGridViewTextBoxColumn.DataPropertyName = "RemainingBalance"
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = "0.00"
-        Me.RemainingBalanceDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
-        Me.RemainingBalanceDataGridViewTextBoxColumn.HeaderText = "Balance"
-        Me.RemainingBalanceDataGridViewTextBoxColumn.Name = "RemainingBalanceDataGridViewTextBoxColumn"
-        Me.RemainingBalanceDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PBalanceDataGridViewTextBoxColumn.DataPropertyName = "pBalance"
+        Me.PBalanceDataGridViewTextBoxColumn.Frozen = True
+        Me.PBalanceDataGridViewTextBoxColumn.HeaderText = "Balance Left"
+        Me.PBalanceDataGridViewTextBoxColumn.Name = "PBalanceDataGridViewTextBoxColumn"
+        Me.PBalanceDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PBalanceDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.PBalanceDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.PBalanceDataGridViewTextBoxColumn.Width = 93
         '
-        'AmountPaidDataGridViewTextBoxColumn
+        'PDentistDataGridViewTextBoxColumn
         '
-        Me.AmountPaidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.AmountPaidDataGridViewTextBoxColumn.DataPropertyName = "AmountPaid"
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = "0.00"
-        Me.AmountPaidDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
-        Me.AmountPaidDataGridViewTextBoxColumn.HeaderText = "Paid Amount"
-        Me.AmountPaidDataGridViewTextBoxColumn.Name = "AmountPaidDataGridViewTextBoxColumn"
-        Me.AmountPaidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PDentistDataGridViewTextBoxColumn.DataPropertyName = "pDentist"
+        Me.PDentistDataGridViewTextBoxColumn.Frozen = True
+        Me.PDentistDataGridViewTextBoxColumn.HeaderText = "Dentist"
+        Me.PDentistDataGridViewTextBoxColumn.Name = "PDentistDataGridViewTextBoxColumn"
+        Me.PDentistDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PDentistDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.PDentistDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.PDentistDataGridViewTextBoxColumn.Width = 148
         '
-        'DataGridViewTextBoxColumn1
+        'PPaidDataGridViewTextBoxColumn
         '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ServiceTime"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ServiceTime"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Visible = False
+        Me.PPaidDataGridViewTextBoxColumn.DataPropertyName = "pPaid"
+        Me.PPaidDataGridViewTextBoxColumn.Frozen = True
+        Me.PPaidDataGridViewTextBoxColumn.HeaderText = "pPaid"
+        Me.PPaidDataGridViewTextBoxColumn.Name = "PPaidDataGridViewTextBoxColumn"
+        Me.PPaidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PPaidDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.PPaidDataGridViewTextBoxColumn.Visible = False
         '
-        'PatientAddressDataGridViewTextBoxColumn
+        'pAddress
         '
-        Me.PatientAddressDataGridViewTextBoxColumn.DataPropertyName = "PatientAddress"
-        Me.PatientAddressDataGridViewTextBoxColumn.HeaderText = "PatientAddress"
-        Me.PatientAddressDataGridViewTextBoxColumn.Name = "PatientAddressDataGridViewTextBoxColumn"
-        Me.PatientAddressDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PatientAddressDataGridViewTextBoxColumn.Visible = False
+        Me.pAddress.DataPropertyName = "pAddress"
+        Me.pAddress.Frozen = True
+        Me.pAddress.HeaderText = "pAddress"
+        Me.pAddress.Name = "pAddress"
+        Me.pAddress.ReadOnly = True
+        Me.pAddress.Visible = False
         '
-        'ServiceRecordDBBindingSource
+        'ServiceRecordBindingSource
         '
-        Me.ServiceRecordDBBindingSource.DataMember = "ServiceRecordDB"
-        Me.ServiceRecordDBBindingSource.DataSource = Me.ToothImageDBDataSet
+        Me.ServiceRecordBindingSource.DataMember = "serviceRecord"
+        Me.ServiceRecordBindingSource.DataSource = Me.PldbDataSet
         '
-        'ToothImageDBDataSet
+        'PldbDataSet
         '
-        Me.ToothImageDBDataSet.DataSetName = "ToothImageDBDataSet"
-        Me.ToothImageDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.PldbDataSet.DataSetName = "PLDBDataSet"
+        Me.PldbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'btnPFclose
         '
-        Me.btnPFclose.Location = New System.Drawing.Point(733, 145)
+        Me.btnPFclose.Location = New System.Drawing.Point(733, 154)
         Me.btnPFclose.Name = "btnPFclose"
-        Me.btnPFclose.Size = New System.Drawing.Size(109, 40)
+        Me.btnPFclose.Size = New System.Drawing.Size(109, 31)
         Me.btnPFclose.TabIndex = 2
         Me.btnPFclose.Text = "Close"
         Me.btnPFclose.UseVisualStyleBackColor = True
         '
         'btnPFadd
         '
-        Me.btnPFadd.Location = New System.Drawing.Point(618, 145)
+        Me.btnPFadd.Location = New System.Drawing.Point(618, 154)
         Me.btnPFadd.Name = "btnPFadd"
-        Me.btnPFadd.Size = New System.Drawing.Size(109, 40)
+        Me.btnPFadd.Size = New System.Drawing.Size(109, 31)
         Me.btnPFadd.TabIndex = 1
-        Me.btnPFadd.Text = "Add To Patient Queue"
+        Me.btnPFadd.Text = "Add toWaiting List"
         Me.btnPFadd.UseVisualStyleBackColor = True
         '
         'txtPFsh
@@ -383,34 +381,13 @@ Partial Class frmPatientProfile
         Me.txtPFsh.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPFsh.Location = New System.Drawing.Point(15, 165)
         Me.txtPFsh.Name = "txtPFsh"
-        Me.txtPFsh.Size = New System.Drawing.Size(132, 20)
+        Me.txtPFsh.Size = New System.Drawing.Size(134, 20)
         Me.txtPFsh.TabIndex = 15
-        Me.txtPFsh.Text = "Patient History:"
+        Me.txtPFsh.Text = "Service History:"
         '
-        'ServiceRecordDBTableAdapter
+        'ServiceRecordTableAdapter
         '
-        Me.ServiceRecordDBTableAdapter.ClearBeforeFill = True
-        '
-        'lblPFBdate
-        '
-        Me.lblPFBdate.AutoSize = True
-        Me.lblPFBdate.BackColor = System.Drawing.Color.Transparent
-        Me.lblPFBdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPFBdate.Location = New System.Drawing.Point(45, 60)
-        Me.lblPFBdate.Name = "lblPFBdate"
-        Me.lblPFBdate.Size = New System.Drawing.Size(96, 20)
-        Me.lblPFBdate.TabIndex = 15
-        Me.lblPFBdate.Text = "Birth Date:"
-        '
-        'lblPFBdateF
-        '
-        Me.lblPFBdateF.AutoSize = True
-        Me.lblPFBdateF.BackColor = System.Drawing.Color.Transparent
-        Me.lblPFBdateF.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPFBdateF.Location = New System.Drawing.Point(147, 60)
-        Me.lblPFBdateF.Name = "lblPFBdateF"
-        Me.lblPFBdateF.Size = New System.Drawing.Size(0, 20)
-        Me.lblPFBdateF.TabIndex = 20
+        Me.ServiceRecordTableAdapter.ClearBeforeFill = True
         '
         'frmPatientProfile
         '
@@ -419,9 +396,17 @@ Partial Class frmPatientProfile
         Me.BackgroundImage = Global.ProjeckMilk.My.Resources.Resources.Background
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(891, 480)
+        Me.Controls.Add(Me.lblPFmaritalF)
+        Me.Controls.Add(Me.lblPFageF)
         Me.Controls.Add(Me.v)
+        Me.Controls.Add(Me.lblPFOccupationF)
+        Me.Controls.Add(Me.lblPFcontactF)
         Me.Controls.Add(Me.lblPFaddressF)
         Me.Controls.Add(Me.lblPFnameF)
+        Me.Controls.Add(Me.lblPFmarital)
+        Me.Controls.Add(Me.lblPFage)
+        Me.Controls.Add(Me.lblPFoccupation)
+        Me.Controls.Add(Me.lblPFcontact)
         Me.Controls.Add(Me.lblPFaddress)
         Me.Controls.Add(Me.lblPFname)
         Me.Controls.Add(Me.gbPF01)
@@ -434,8 +419,8 @@ Partial Class frmPatientProfile
         Me.gbPF01.ResumeLayout(False)
         Me.gbPF01.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ServiceRecordDBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ToothImageDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ServiceRecordBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PldbDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -452,28 +437,26 @@ Partial Class frmPatientProfile
     Friend WithEvents lblPFOccupationF As System.Windows.Forms.Label
     Friend WithEvents v As System.Windows.Forms.Label
     Friend WithEvents lblPFageF As System.Windows.Forms.Label
+    Friend WithEvents PatientDBTableAdapter As ProjeckMilk.PLDBDataSetTableAdapters.patientDBTableAdapter
     Friend WithEvents lblPFmaritalF As System.Windows.Forms.Label
     Friend WithEvents gbPF01 As System.Windows.Forms.GroupBox
     Friend WithEvents txtPFsh As System.Windows.Forms.Label
     Friend WithEvents btnPFclose As System.Windows.Forms.Button
     Friend WithEvents btnPFadd As System.Windows.Forms.Button
     Friend WithEvents ServiceTimeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PldbDataSet As ProjeckMilk.PLDBDataSet
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents ToothImageDBDataSet As ToothImageDBDataSet
-    Friend WithEvents ServiceRecordDBBindingSource As BindingSource
-    Friend WithEvents ServiceRecordDBTableAdapter As ToothImageDBDataSetTableAdapters.ServiceRecordDBTableAdapter
-    Friend WithEvents ServiceRecIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PatientNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DentalServiceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ServiceDateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ToothNumberDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents MedsDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DentistDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ServiceAmountDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents RemainingBalanceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents AmountPaidDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents PatientAddressDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents lblPFBdateF As Label
-    Friend WithEvents lblPFBdate As Label
+    Friend WithEvents ServiceRecordBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents ServiceRecordTableAdapter As ProjeckMilk.PLDBDataSetTableAdapters.serviceRecordTableAdapter
+    Friend WithEvents IDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DentalServiceDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServiceDateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ToothNumberDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents MedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServiceAmountDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PBalanceDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PDentistDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PPaidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents pAddress As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

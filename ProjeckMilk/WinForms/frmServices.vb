@@ -1,6 +1,6 @@
 ﻿Public Class frmServices
-    Dim pSQ As New ToothImageDBDataSetTableAdapters.ServiceQueueDBTableAdapter()
-    Dim pMed As New ToothImageDBDataSetTableAdapters.MedsQueueDBTableAdapter()
+    Dim pSQ As New PLDBDataSetTableAdapters.serviceQueueTableAdapter()
+    Dim pMed As New PLDBDataSetTableAdapters.medQueueTableAdapter()
     Dim dentst As String
     Dim a As Integer
     Public b As Integer
@@ -81,8 +81,8 @@
                         Me.Validate()
                         Me.pMed.Insert(frmAppoint.DataGridView1.CurrentRow.Cells(1).Value.ToString, txtServicesType.Text, Date.Now.ToShortDateString + " " + Date.Now.ToShortTimeString, txtServicesTN.Text _
                                       , txtServicesAmount.Text, frmAppoint.DataGridView1.CurrentRow.Cells(5).Value.ToString, frmAppoint.DataGridView1.CurrentRow.Cells(6).Value.ToString)
-                        Me.pMed.Update(frmMed.ToothImageDBDataSet.MedsQueueDB)
-                        frmMed.MedsQueueDBTableAdapter.Fill(frmMed.ToothImageDBDataSet.MedsQueueDB)
+                        Me.pMed.Update(frmMed.PLDBDataSet.medQueue)
+                        frmMed.MedQueueTableAdapter.Fill(frmMed.PLDBDataSet.medQueue)
                         frmMed.aa = 1
                         frmMed.aaa = 1
                         Me.Close()
@@ -91,8 +91,7 @@
                         Exit Sub
                     End If
                 Catch ex As Exception
-                    'MsgBox("Adding patient to queue failed!", MsgBoxStyle.Critical, "Failed")
-                    MsgBox(ex.ToString, MsgBoxStyle.Critical, "Exception Error")
+                    MsgBox("Adding patient to queue failed!", MsgBoxStyle.Critical, "Failed")
                     Exit Sub
                 End Try
             ElseIf b <> 1 Then
@@ -103,8 +102,8 @@
                     Me.Validate()
                     Me.pMed.Insert(frmPatientProfile.lblPFnameF.Text, txtServicesType.Text, Date.Now.ToShortDateString + " " + Date.Now.ToShortTimeString, txtServicesTN.Text _
                                   , txtServicesAmount.Text, dentst, frmPatientProfile.lblPFaddressF.Text)
-                    Me.pMed.Update(frmMed.ToothImageDBDataSet.MedsQueueDB)
-                    frmMed.MedsQueueDBTableAdapter.Fill(frmMed.ToothImageDBDataSet.MedsQueueDB)
+                    Me.pMed.Update(frmMed.PLDBDataSet.medQueue)
+                    frmMed.MedQueueTableAdapter.Fill(frmMed.PLDBDataSet.medQueue)
                     frmMed.aa = 1
                     Me.Close()
                     frmPatientProfile.Close()
@@ -120,13 +119,13 @@
                     Exit Sub
                 Else
                     Try
-                        MainFormMetro.ServiceQueueDBTableAdapter.Insert(frmAppoint.DataGridView1.CurrentRow.Cells(1).Value.ToString, txtServicesType.Text, Date.Now.ToShortDateString + " " + Date.Now.ToShortTimeString, txtServicesTN.Text _
+                        MainFormMetro.ServiceQueueTableAdapter.Insert(frmAppoint.DataGridView1.CurrentRow.Cells(1).Value.ToString, txtServicesType.Text, Date.Now.ToShortDateString + " " + Date.Now.ToShortTimeString, txtServicesTN.Text _
                                   , txtServicesAmount.Text, frmAppoint.DataGridView1.CurrentRow.Cells(5).Value.ToString, frmAppoint.DataGridView1.CurrentRow.Cells(6).Value.ToString)
-                        MainFormMetro.ServiceQueueDBTableAdapter.Update(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
-                        MainFormMetro.ServiceQueueDBTableAdapter.Fill(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
-                        frmAppoint.AppointmentsDBTableAdapter.Delete(frmAppoint.DataGridView1.CurrentRow.Cells(0).Value, frmAppoint.DataGridView1.CurrentRow.Cells(1).Value, frmAppoint.DataGridView1.CurrentRow.Cells(2).Value, frmAppoint.DataGridView1.CurrentRow.Cells(3).Value _
+                        MainFormMetro.ServiceQueueTableAdapter.Update(MainFormMetro.PLDBDataSet.serviceQueue)
+                        MainFormMetro.ServiceQueueTableAdapter.Fill(MainFormMetro.PLDBDataSet.serviceQueue)
+                        frmAppoint.ApptmntTableAdapter.Delete(frmAppoint.DataGridView1.CurrentRow.Cells(0).Value, frmAppoint.DataGridView1.CurrentRow.Cells(1).Value, frmAppoint.DataGridView1.CurrentRow.Cells(2).Value, frmAppoint.DataGridView1.CurrentRow.Cells(3).Value _
                                                              , frmAppoint.DataGridView1.CurrentRow.Cells(4).Value, frmAppoint.DataGridView1.CurrentRow.Cells(5).Value, frmAppoint.DataGridView1.CurrentRow.Cells(6).Value)
-                        frmAppoint.AppointmentsDBTableAdapter.Fill(frmAppoint.ToothImageDBDataSet.AppointmentsDB)
+                        frmAppoint.ApptmntTableAdapter.Fill(frmAppoint.PLDBDataSet.apptmnt)
                         b = 0
                         MainFormMetro.tang = 1
                         If MainFormMetro.DataGridView1.Rows.Count > 0 Then
@@ -139,8 +138,7 @@
                         Me.Close()
                         Exit Sub
                     Catch ex As Exception
-                        'MsgBox("Adding patient to queue failed!", MsgBoxStyle.Critical, "Failed")
-                        MsgBox(ex.ToString, MsgBoxStyle.Critical, "Exception Error")
+                        MsgBox("Adding patient to queue failed!", MsgBoxStyle.Critical, "Failed")
                         Exit Sub
                     End Try
                     If MainFormMetro.DataGridView1.Rows.Count > 0 Then
@@ -156,10 +154,10 @@
                     MsgBox("You cannot leave a category empty! Please fill the missing informations.", vbExclamation, "Warning!")
                     Exit Sub
                 Else
-                    MainFormMetro.ServiceQueueDBTableAdapter.Insert(frmPatientProfile.lblPFnameF.Text, txtServicesType.Text, Date.Now.ToShortDateString + " " + Date.Now.ToShortTimeString, txtServicesTN.Text _
+                    MainFormMetro.ServiceQueueTableAdapter.Insert(frmPatientProfile.lblPFnameF.Text, txtServicesType.Text, Date.Now.ToShortDateString + " " + Date.Now.ToShortTimeString, txtServicesTN.Text _
                                       , txtServicesAmount.Text, dentst, frmPatientProfile.lblPFaddressF.Text)
-                    MainFormMetro.ServiceQueueDBTableAdapter.Update(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
-                    MainFormMetro.ServiceQueueDBTableAdapter.Fill(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
+                    MainFormMetro.ServiceQueueTableAdapter.Update(MainFormMetro.PLDBDataSet.serviceQueue)
+                    MainFormMetro.ServiceQueueTableAdapter.Fill(MainFormMetro.PLDBDataSet.serviceQueue)
                     MainFormMetro.tang = 1
                     If MainFormMetro.DataGridView1.Rows.Count > 0 Then
                         MainFormMetro.ButtonAdv4.Enabled = True
@@ -192,11 +190,11 @@
                         Me.Validate()
                         Me.pSQ.Insert(frmAppoint.DataGridView1.CurrentRow.Cells(1).Value.ToString, txtServicesType.Text, Date.Now.ToShortDateString + " " + Date.Now.ToShortTimeString, txtServicesTN.Text _
                                   , txtServicesAmount.Text, frmAppoint.DataGridView1.CurrentRow.Cells(5).Value.ToString, frmAppoint.DataGridView1.CurrentRow.Cells(6).Value.ToString)
-                        Me.pSQ.Update(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
-                        MainFormMetro.ServiceQueueDBTableAdapter.Fill(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
-                        frmAppoint.AppointmentsDBTableAdapter.Delete(frmAppoint.DataGridView1.CurrentRow.Cells(0).Value, frmAppoint.DataGridView1.CurrentRow.Cells(1).Value, frmAppoint.DataGridView1.CurrentRow.Cells(2).Value, frmAppoint.DataGridView1.CurrentRow.Cells(3).Value _
+                        Me.pSQ.Update(MainFormMetro.PLDBDataSet.serviceQueue)
+                        MainFormMetro.ServiceQueueTableAdapter.Fill(MainFormMetro.PLDBDataSet.serviceQueue)
+                        frmAppoint.ApptmntTableAdapter.Delete(frmAppoint.DataGridView1.CurrentRow.Cells(0).Value, frmAppoint.DataGridView1.CurrentRow.Cells(1).Value, frmAppoint.DataGridView1.CurrentRow.Cells(2).Value, frmAppoint.DataGridView1.CurrentRow.Cells(3).Value _
                                                               , frmAppoint.DataGridView1.CurrentRow.Cells(4).Value, frmAppoint.DataGridView1.CurrentRow.Cells(5).Value, frmAppoint.DataGridView1.CurrentRow.Cells(6).Value)
-                        frmAppoint.AppointmentsDBTableAdapter.Fill(frmAppoint.ToothImageDBDataSet.AppointmentsDB)
+                        frmAppoint.ApptmntTableAdapter.Fill(frmAppoint.PLDBDataSet.apptmnt)
                         b = 0
                         Me.Close()
                         If MainFormMetro.DataGridView1.Rows.Count > 0 Then
@@ -209,8 +207,7 @@
                         frmPatientProfile.Close()
                         Exit Sub
                     Catch ex As Exception
-                        'MsgBox("Adding patient to queue failed!", MsgBoxStyle.Critical, "Failed")
-                        MsgBox(ex.ToString, MsgBoxStyle.Critical, "Exception Error")
+                        MsgBox("Adding patient to queue failed!", MsgBoxStyle.Critical, "Failed")
                         Exit Sub
                     End Try
                 End If
@@ -224,8 +221,8 @@
                         'Date.Now.ToShortDateString() + " " + Date.Now.ToLongTimeString()
                         Me.pSQ.Insert(frmPatientProfile.lblPFnameF.Text, txtServicesType.Text, Date.Now.ToShortDateString + " " + Date.Now.ToShortTimeString, txtServicesTN.Text _
                                       , txtServicesAmount.Text, dentst, frmPatientProfile.lblPFaddressF.Text)
-                        Me.pSQ.Update(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
-                        MainFormMetro.ServiceQueueDBTableAdapter.Fill(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
+                        Me.pSQ.Update(MainFormMetro.PLDBDataSet.serviceQueue)
+                        MainFormMetro.ServiceQueueTableAdapter.Fill(MainFormMetro.PLDBDataSet.serviceQueue)
                         MainFormMetro.tang = 1
                         Me.Close()
                         If MainFormMetro.DataGridView1.Rows.Count > 0 Then
@@ -238,8 +235,7 @@
                         frmPatientProfile.Close()
                         Exit Sub
                     Catch ex As Exception
-                        'MsgBox("Adding patient to queue failed!", MsgBoxStyle.Critical, "Failed")
-                        MsgBox(ex.ToString, MsgBoxStyle.Critical, "Exception Error")
+                        MsgBox("Adding patient to queue failed!", MsgBoxStyle.Critical, "Failed")
                         Exit Sub
                     End Try
                 End If
@@ -256,11 +252,11 @@
                         'frmAppoint.DataGridView1.CurrentRow.Cells(2).Value.ToString + " " + frmAppoint.DataGridView1.CurrentRow.Cells(3).Value.ToString
                         Me.pSQ.Insert(frmAppoint.DataGridView1.CurrentRow.Cells(1).Value.ToString, txtServicesType.Text, Date.Now.ToShortDateString + " " + Date.Now.ToShortTimeString, txtServicesTN.Text _
                                       , txtServicesAmount.Text, frmAppoint.DataGridView1.CurrentRow.Cells(5).Value.ToString, frmAppoint.DataGridView1.CurrentRow.Cells(6).Value.ToString)
-                        Me.pSQ.Update(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
-                        MainFormMetro.ServiceQueueDBTableAdapter.Fill(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
-                        frmAppoint.AppointmentsDBTableAdapter.Delete(frmAppoint.DataGridView1.CurrentRow.Cells(0).Value, frmAppoint.DataGridView1.CurrentRow.Cells(1).Value, frmAppoint.DataGridView1.CurrentRow.Cells(2).Value, frmAppoint.DataGridView1.CurrentRow.Cells(3).Value _
+                        Me.pSQ.Update(MainFormMetro.PLDBDataSet.serviceQueue)
+                        MainFormMetro.ServiceQueueTableAdapter.Fill(MainFormMetro.PLDBDataSet.serviceQueue)
+                        frmAppoint.ApptmntTableAdapter.Delete(frmAppoint.DataGridView1.CurrentRow.Cells(0).Value, frmAppoint.DataGridView1.CurrentRow.Cells(1).Value, frmAppoint.DataGridView1.CurrentRow.Cells(2).Value, frmAppoint.DataGridView1.CurrentRow.Cells(3).Value _
                                                               , frmAppoint.DataGridView1.CurrentRow.Cells(4).Value, frmAppoint.DataGridView1.CurrentRow.Cells(5).Value, frmAppoint.DataGridView1.CurrentRow.Cells(6).Value)
-                        frmAppoint.AppointmentsDBTableAdapter.Fill(frmAppoint.ToothImageDBDataSet.AppointmentsDB)
+                        frmAppoint.ApptmntTableAdapter.Fill(frmAppoint.PLDBDataSet.apptmnt)
                         b = 0
                         Me.Close()
                         If MainFormMetro.DataGridView1.Rows.Count > 0 Then
@@ -273,8 +269,7 @@
                         frmPatientProfile.Close()
                         Exit Sub
                     Catch ex As Exception
-                        'MsgBox("Adding patient to queue failed!", MsgBoxStyle.Critical, "Failed")
-                        MsgBox(ex.ToString, MsgBoxStyle.Critical, "Exception Error")
+                        MsgBox("Adding patient to queue failed!", MsgBoxStyle.Critical, "Failed")
                         Exit Sub
                     End Try
                 End If
@@ -287,8 +282,8 @@
                         Me.Validate()
                         Me.pSQ.Insert(frmPatientProfile.lblPFnameF.Text, txtServicesType.Text, Date.Now.ToShortDateString + " " + Date.Now.ToShortTimeString, txtServicesTN.Text _
                                       , txtServicesAmount.Text, dentst, frmPatientProfile.lblPFaddressF.Text)
-                        Me.pSQ.Update(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
-                        MainFormMetro.ServiceQueueDBTableAdapter.Fill(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
+                        Me.pSQ.Update(MainFormMetro.PLDBDataSet.serviceQueue)
+                        MainFormMetro.ServiceQueueTableAdapter.Fill(MainFormMetro.PLDBDataSet.serviceQueue)
                         Me.Close()
                         If MainFormMetro.DataGridView1.Rows.Count > 0 Then
                             MainFormMetro.ButtonAdv4.Enabled = True
@@ -300,8 +295,7 @@
                         frmPatientProfile.Close()
                         Exit Sub
                     Catch ex As Exception
-                        'MsgBox("Adding patient to queue failed!", MsgBoxStyle.Critical, "Failed")
-                        MsgBox(ex.ToString, MsgBoxStyle.Critical, "Exception Error")
+                        MsgBox("Adding patient to queue failed!", MsgBoxStyle.Critical, "Failed")
                         Exit Sub
                     End Try
                 End If
@@ -316,11 +310,11 @@
                     Me.Validate()
                     Me.pSQ.Insert(frmAppoint.DataGridView1.CurrentRow.Cells(1).Value.ToString, txtServicesType.Text, Date.Now.ToShortDateString + " " + Date.Now.ToShortTimeString, txtServicesTN.Text _
                                   , txtServicesAmount.Text, frmAppoint.DataGridView1.CurrentRow.Cells(5).Value.ToString, frmAppoint.DataGridView1.CurrentRow.Cells(6).Value.ToString)
-                    Me.pSQ.Update(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
-                    MainFormMetro.ServiceQueueDBTableAdapter.Fill(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
-                    frmAppoint.AppointmentsDBTableAdapter.Delete(frmAppoint.DataGridView1.CurrentRow.Cells(0).Value, frmAppoint.DataGridView1.CurrentRow.Cells(1).Value, frmAppoint.DataGridView1.CurrentRow.Cells(2).Value, frmAppoint.DataGridView1.CurrentRow.Cells(3).Value _
+                    Me.pSQ.Update(MainFormMetro.PLDBDataSet.serviceQueue)
+                    MainFormMetro.ServiceQueueTableAdapter.Fill(MainFormMetro.PLDBDataSet.serviceQueue)
+                    frmAppoint.ApptmntTableAdapter.Delete(frmAppoint.DataGridView1.CurrentRow.Cells(0).Value, frmAppoint.DataGridView1.CurrentRow.Cells(1).Value, frmAppoint.DataGridView1.CurrentRow.Cells(2).Value, frmAppoint.DataGridView1.CurrentRow.Cells(3).Value _
                                                           , frmAppoint.DataGridView1.CurrentRow.Cells(4).Value, frmAppoint.DataGridView1.CurrentRow.Cells(5).Value, frmAppoint.DataGridView1.CurrentRow.Cells(6).Value)
-                    frmAppoint.AppointmentsDBTableAdapter.Fill(frmAppoint.ToothImageDBDataSet.AppointmentsDB)
+                    frmAppoint.ApptmntTableAdapter.Fill(frmAppoint.PLDBDataSet.apptmnt)
                     b = 0
                     Me.Close()
                     If MainFormMetro.DataGridView1.Rows.Count > 0 Then
@@ -333,8 +327,7 @@
                     frmPatientProfile.Close()
                     Exit Sub
                 Catch ex As Exception
-                    'MsgBox("Adding patient to queue failed!", MsgBoxStyle.Critical, "Failed")
-                    MsgBox(ex.ToString, MsgBoxStyle.Critical, "Exception Error")
+                    MsgBox("Adding patient to queue failed!", MsgBoxStyle.Critical, "Failed")
                     Exit Sub
                 End Try
             End If
@@ -346,8 +339,8 @@
                 Me.Validate()
                 Me.pSQ.Insert(frmPatientProfile.lblPFnameF.Text, txtServicesType.Text, Date.Now.ToShortDateString + " " + Date.Now.ToShortTimeString, txtServicesTN.Text _
                               , txtServicesAmount.Text, dentst, frmPatientProfile.lblPFaddressF.Text)
-                Me.pSQ.Update(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
-                MainFormMetro.ServiceQueueDBTableAdapter.Fill(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
+                Me.pSQ.Update(MainFormMetro.PLDBDataSet.serviceQueue)
+                MainFormMetro.ServiceQueueTableAdapter.Fill(MainFormMetro.PLDBDataSet.serviceQueue)
                 Me.Close()
                 frmPatientProfile.Close()
                 If MainFormMetro.DataGridView1.Rows.Count > 0 Then
@@ -359,8 +352,7 @@
                 End If
                 Exit Sub
             Catch ex As Exception
-                'MsgBox("Adding patient to queue failed!", MsgBoxStyle.Critical, "Failed")
-                MsgBox(ex.ToString, MsgBoxStyle.Critical, "Exception Error")
+                MsgBox("Adding patient to queue failed!", MsgBoxStyle.Critical, "Failed")
                 Exit Sub
             End Try
         End If

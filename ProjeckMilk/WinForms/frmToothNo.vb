@@ -18,11 +18,11 @@
             If txtMove.Text = "" Or txtMoveS.Text = "" Or txtMoveS.Text = "0.00" Then
                 MsgBox("You cannot leave the amout field empty! Please fill in the right amount.", vbExclamation, "Warning!")
             Else
-                MainFormMetro.ServiceQueueDBTableAdapter.Insert(frmAppoint.DataGridView1.CurrentRow.Cells(1).Value.ToString(), frmAppoint.DataGridView1.CurrentRow.Cells(4).Value.ToString() _
+                MainFormMetro.ServiceQueueTableAdapter.Insert(frmAppoint.DataGridView1.CurrentRow.Cells(1).Value.ToString(), frmAppoint.DataGridView1.CurrentRow.Cells(4).Value.ToString() _
                                                               , frmAppoint.DataGridView1.CurrentRow.Cells(2).Value.ToString() + " " + frmAppoint.DataGridView1.CurrentRow.Cells(3).Value.ToString(), txtMove.Text, txtMoveS.Text, frmAppoint.DataGridView1.CurrentRow.Cells(5).Value.ToString(), frmAppoint.DataGridView1.CurrentRow.Cells(6).Value.ToString())
-                MainFormMetro.ServiceQueueDBTableAdapter.Fill(MainFormMetro.ToothImageDBDataSet.ServiceQueueDB)
-                frmAppoint.AppointmentsDBTableAdapter.Delete(frmAppoint.DataGridView1.CurrentRow.Cells(0).Value.ToString(), frmAppoint.DataGridView1.CurrentRow.Cells(1).Value.ToString(), frmAppoint.DataGridView1.CurrentRow.Cells(2).Value.ToString(), frmAppoint.DataGridView1.CurrentRow.Cells(3).Value.ToString(), frmAppoint.DataGridView1.CurrentRow.Cells(4).Value.ToString(), frmAppoint.DataGridView1.CurrentRow.Cells(5).Value.ToString(), frmAppoint.DataGridView1.CurrentRow.Cells(6).Value.ToString())
-                frmAppoint.AppointmentsDBTableAdapter.Fill(frmAppoint.ToothImageDBDataSet.AppointmentsDB)
+                MainFormMetro.ServiceQueueTableAdapter.Fill(MainFormMetro.PLDBDataSet.serviceQueue)
+                frmAppoint.ApptmntTableAdapter.Delete(frmAppoint.DataGridView1.CurrentRow.Cells(0).Value.ToString(), frmAppoint.DataGridView1.CurrentRow.Cells(1).Value.ToString(), frmAppoint.DataGridView1.CurrentRow.Cells(2).Value.ToString(), frmAppoint.DataGridView1.CurrentRow.Cells(3).Value.ToString(), frmAppoint.DataGridView1.CurrentRow.Cells(4).Value.ToString(), frmAppoint.DataGridView1.CurrentRow.Cells(5).Value.ToString(), frmAppoint.DataGridView1.CurrentRow.Cells(6).Value.ToString())
+                frmAppoint.ApptmntTableAdapter.Fill(frmAppoint.PLDBDataSet.apptmnt)
                 If frmAppoint.DataGridView1.Rows.Count >= 1 Then
                     frmAppoint.btnAppCancel.Enabled = True
                     frmAppoint.btnAppQueue.Enabled = True

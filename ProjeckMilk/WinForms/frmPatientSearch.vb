@@ -1,5 +1,5 @@
 ﻿Public Class frmPatientSearch
-    Dim pDB As New ToothImageDBDataSetTableAdapters.PatientDBTableAdapter()
+    Dim pDB As New PLDBDataSetTableAdapters.patientDBTableAdapter()
     Dim dr As DataRow
     Dim dv As DataView = New DataView()
     Public b As Integer
@@ -24,11 +24,11 @@
         Return Age
     End Function
     Private Sub frmPatientSearch_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'PLDBDataSet.patientDB' table. You can move, or remove it, as needed.
         Try
-            Me.PatientDBTableAdapterSQL.Fill(Me.ToothImageDBDataSet.PatientDB)
-            'Me.PatientDBTableAdapter.Fill(Me.PLDBDataSet.patientDB)
+            Me.PatientDBTableAdapter.Fill(Me.PLDBDataSet.patientDB)
         Catch ex As Exception
-            MsgBox("Cannot access database file. Please check the database connection.", vbCritical, "Database Error")
+            MsgBox("Cannot access database file. Please check if the Access Database Engine is installed.", vbCritical, "Database Error")
             End
         End Try
         If Me.DataGridView1.Rows.Count > 0 Then
@@ -43,9 +43,7 @@
     Private Sub btnPScancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPScancel.Click
         Me.Close()
     End Sub
-    Private Sub DataGridView1_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView1.DoubleClick
-        btnPSShow_Click(sender, New System.EventArgs())
-    End Sub
+
     Private Sub btnPSShow_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPSShow.Click
         Dim cRow = DataGridView1.CurrentRow
         frmPatientProfile.lblPFnameF.Text = cRow.Cells(4).Value.ToString()
@@ -53,9 +51,7 @@
         frmPatientProfile.lblPFcontactF.Text = cRow.Cells(6).Value().ToString()
         frmPatientProfile.lblPFOccupationF.Text = cRow.Cells(8).Value.ToString()
         frmPatientProfile.lblPFmaritalF.Text = cRow.Cells(9).Value.ToString()
-        Dim Bdate As DateTime
-        Bdate = cRow.Cells(7).Value
-        frmPatientProfile.lblPFBdateF.Text = Bdate.ToString("MMMM dd, yyyy")
+        Dim Bdate = cRow.Cells(7).Value
         Dim pBdate As Integer = Age(Bdate, Now)
         frmPatientProfile.lblPFageF.Text = pBdate
         frmPatientProfile.Text = cRow.Cells(4).Value.ToString()
@@ -64,8 +60,8 @@
     End Sub
 
     Private Sub txtPSname_KeyUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPSname.KeyUp
-        dv.Table = ToothImageDBDataSet.PatientDB
-        dv.RowFilter = "FullName like '" & txtPSname.Text & "%'"
+        dv.Table = PLDBDataSet.patientDB
+        dv.RowFilter = "pFullName like '" & txtPSname.Text & "%'"
         DataGridView1.DataSource = dv
     End Sub
 
@@ -88,9 +84,9 @@
         End If
         Try
             If a = MsgBoxResult.Yes And b = 1 Then
-                Me.PatientDBTableAdapterSQL.Delete(DataGridView1.CurrentRow.Cells(0).Value, DataGridView1.CurrentRow.Cells(1).Value, DataGridView1.CurrentRow.Cells(2).Value, DataGridView1.CurrentRow.Cells(3).Value, DataGridView1.CurrentRow.Cells(4).Value,
+                Me.PatientDBTableAdapter.Delete(DataGridView1.CurrentRow.Cells(0).Value, DataGridView1.CurrentRow.Cells(1).Value, DataGridView1.CurrentRow.Cells(2).Value, DataGridView1.CurrentRow.Cells(3).Value, DataGridView1.CurrentRow.Cells(4).Value, _
                                                 DataGridView1.CurrentRow.Cells(5).Value, DataGridView1.CurrentRow.Cells(6).Value, DataGridView1.CurrentRow.Cells(7).Value, DataGridView1.CurrentRow.Cells(8).Value, DataGridView1.CurrentRow.Cells(9).Value)
-                Me.PatientDBTableAdapterSQL.Fill(Me.ToothImageDBDataSet.PatientDB)
+                Me.PatientDBTableAdapter.Fill(Me.PLDBDataSet.patientDB)
             ElseIf b = 2 Then
                 b = 0
                 Exit Sub
@@ -105,7 +101,7 @@
                 btnEditRecord.Enabled = False
             End If
         Catch ex As Exception
-            MsgBox("Cannot access database file. Please check the database connection.", vbCritical, "Database Error")
+            MsgBox("Cannot access database file. Please check if the Access 2010 Database Engine is installed.", vbCritical, "Database Error")
             End
         End Try
     End Sub

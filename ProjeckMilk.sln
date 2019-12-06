@@ -7,18 +7,12 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Tooth Image Dental Records"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0E330976-F29C-4C34-BDC9-7E90590ED694}.Debug|x64.ActiveCfg = Debug|x64
-		{0E330976-F29C-4C34-BDC9-7E90590ED694}.Debug|x64.Build.0 = Debug|x64
 		{0E330976-F29C-4C34-BDC9-7E90590ED694}.Debug|x86.ActiveCfg = Debug|x86
 		{0E330976-F29C-4C34-BDC9-7E90590ED694}.Debug|x86.Build.0 = Debug|x86
-		{0E330976-F29C-4C34-BDC9-7E90590ED694}.Release|x64.ActiveCfg = Release|x64
-		{0E330976-F29C-4C34-BDC9-7E90590ED694}.Release|x64.Build.0 = Release|x64
 		{0E330976-F29C-4C34-BDC9-7E90590ED694}.Release|x86.ActiveCfg = Release|x86
 		{0E330976-F29C-4C34-BDC9-7E90590ED694}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
@@ -26,12 +20,12 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_UpdateAssemblyVersion = True
-		BuildVersion_UpdateFileVersion = True
-		BuildVersion_AssemblyInfoFilename = ProjeckMilk\My Project\AssemblyInfo.vb
-		BuildVersion_BuildVersioningStyle = None.None.Increment.MonthAndDayStamp
-		BuildVersion_StartDate = 2011/8/25
-		BuildVersion_UseGlobalSettings = False
 		SolutionGuid = {F7E19C27-7AAD-406A-A766-5C0171789CAB}
+		BuildVersion_UseGlobalSettings = False
+		BuildVersion_StartDate = 2011/8/25
+		BuildVersion_BuildVersioningStyle = None.None.Increment.MonthAndDayStamp
+		BuildVersion_AssemblyInfoFilename = ProjeckMilk\My Project\AssemblyInfo.vb
+		BuildVersion_UpdateFileVersion = True
+		BuildVersion_UpdateAssemblyVersion = True
 	EndGlobalSection
 EndGlobal

@@ -5,6 +5,6 @@
     End Sub
 
     Private Sub frmAbout_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Label3.Text = "Version: " + My.Application.Info.Version.ToString() + " - SQL Edition"
+        Label3.Text = "Version: " + My.Application.Info.Version.ToString()
     End Sub
 End Class

@@ -25,16 +25,16 @@ Partial Class frmSummary
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSummary))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.gbSummary = New System.Windows.Forms.GroupBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.ServiceRecordDBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ToothImageDBDataSet = New ProjeckMilk.ToothImageDBDataSet()
+        Me.ServiceRecordBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PLDBDataSet = New ProjeckMilk.PLDBDataSet()
         Me.dtpSummaryFrom = New System.Windows.Forms.DateTimePicker()
         Me.lblSummaryFrom = New System.Windows.Forms.Label()
         Me.lblSummarySH = New System.Windows.Forms.Label()
         Me.lblSummaryTotal = New System.Windows.Forms.Label()
         Me.lblSummaryIncome = New System.Windows.Forms.Label()
+        Me.ServiceRecordTableAdapter = New ProjeckMilk.PLDBDataSetTableAdapters.serviceRecordTableAdapter()
         Me.btnSummaryAll = New System.Windows.Forms.Button()
         Me.gbSummaryTotal = New System.Windows.Forms.GroupBox()
         Me.lblSummaryNote2 = New System.Windows.Forms.Label()
@@ -48,23 +48,21 @@ Partial Class frmSummary
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.btnExportExcel = New System.Windows.Forms.Button()
-        Me.ServiceRecordDBTableAdapter = New ProjeckMilk.ToothImageDBDataSetTableAdapters.ServiceRecordDBTableAdapter()
-        Me.ServiceRecIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PatientNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DentalServiceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ServiceDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.serviceTime = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToothNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MedsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ServiceAmountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RemainingBalanceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DentistDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AmountPaidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServiceTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PatientAddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PBalanceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PDentistDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pPaid = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.gbSummary.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ServiceRecordDBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ToothImageDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ServiceRecordBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PLDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbSummaryTotal.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -87,8 +85,8 @@ Partial Class frmSummary
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ServiceRecIDDataGridViewTextBoxColumn, Me.PatientNameDataGridViewTextBoxColumn, Me.DentalServiceDataGridViewTextBoxColumn, Me.ServiceDateDataGridViewTextBoxColumn, Me.ToothNumberDataGridViewTextBoxColumn, Me.MedsDataGridViewTextBoxColumn, Me.ServiceAmountDataGridViewTextBoxColumn, Me.RemainingBalanceDataGridViewTextBoxColumn, Me.DentistDataGridViewTextBoxColumn, Me.AmountPaidDataGridViewTextBoxColumn, Me.ServiceTimeDataGridViewTextBoxColumn, Me.PatientAddressDataGridViewTextBoxColumn})
-        Me.DataGridView1.DataSource = Me.ServiceRecordDBBindingSource
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDDataGridViewTextBoxColumn, Me.PNameDataGridViewTextBoxColumn, Me.DentalServiceDataGridViewTextBoxColumn, Me.ServiceDateDataGridViewTextBoxColumn, Me.serviceTime, Me.ToothNumberDataGridViewTextBoxColumn, Me.MedDataGridViewTextBoxColumn, Me.ServiceAmountDataGridViewTextBoxColumn, Me.PBalanceDataGridViewTextBoxColumn, Me.PDentistDataGridViewTextBoxColumn, Me.pPaid})
+        Me.DataGridView1.DataSource = Me.ServiceRecordBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(7, 19)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
@@ -98,15 +96,15 @@ Partial Class frmSummary
         Me.DataGridView1.Size = New System.Drawing.Size(499, 289)
         Me.DataGridView1.TabIndex = 0
         '
-        'ServiceRecordDBBindingSource
+        'ServiceRecordBindingSource
         '
-        Me.ServiceRecordDBBindingSource.DataMember = "ServiceRecordDB"
-        Me.ServiceRecordDBBindingSource.DataSource = Me.ToothImageDBDataSet
+        Me.ServiceRecordBindingSource.DataMember = "serviceRecord"
+        Me.ServiceRecordBindingSource.DataSource = Me.PLDBDataSet
         '
-        'ToothImageDBDataSet
+        'PLDBDataSet
         '
-        Me.ToothImageDBDataSet.DataSetName = "ToothImageDBDataSet"
-        Me.ToothImageDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.PLDBDataSet.DataSetName = "PLDBDataSet"
+        Me.PLDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'dtpSummaryFrom
         '
@@ -146,7 +144,7 @@ Partial Class frmSummary
         Me.lblSummaryTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSummaryTotal.Location = New System.Drawing.Point(37, 25)
         Me.lblSummaryTotal.Name = "lblSummaryTotal"
-        Me.lblSummaryTotal.Size = New System.Drawing.Size(274, 16)
+        Me.lblSummaryTotal.Size = New System.Drawing.Size(266, 16)
         Me.lblSummaryTotal.TabIndex = 7
         Me.lblSummaryTotal.Text = "Total Income from Rendered Service:"
         Me.lblSummaryTotal.Visible = False
@@ -162,6 +160,10 @@ Partial Class frmSummary
         Me.lblSummaryIncome.TabIndex = 8
         Me.lblSummaryIncome.Text = "Label1"
         Me.lblSummaryIncome.Visible = False
+        '
+        'ServiceRecordTableAdapter
+        '
+        Me.ServiceRecordTableAdapter.ClearBeforeFill = True
         '
         'btnSummaryAll
         '
@@ -274,116 +276,114 @@ Partial Class frmSummary
         Me.btnExportExcel.Text = "Export To Excel"
         Me.btnExportExcel.UseVisualStyleBackColor = False
         '
-        'ServiceRecordDBTableAdapter
+        'IDDataGridViewTextBoxColumn
         '
-        Me.ServiceRecordDBTableAdapter.ClearBeforeFill = True
+        Me.IDDataGridViewTextBoxColumn.DataPropertyName = "ID"
+        Me.IDDataGridViewTextBoxColumn.Frozen = True
+        Me.IDDataGridViewTextBoxColumn.HeaderText = "Service Ref. No."
+        Me.IDDataGridViewTextBoxColumn.Name = "IDDataGridViewTextBoxColumn"
+        Me.IDDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.IDDataGridViewTextBoxColumn.Visible = False
         '
-        'ServiceRecIDDataGridViewTextBoxColumn
+        'PNameDataGridViewTextBoxColumn
         '
-        Me.ServiceRecIDDataGridViewTextBoxColumn.DataPropertyName = "ServiceRecID"
-        Me.ServiceRecIDDataGridViewTextBoxColumn.HeaderText = "ServiceRecID"
-        Me.ServiceRecIDDataGridViewTextBoxColumn.Name = "ServiceRecIDDataGridViewTextBoxColumn"
-        Me.ServiceRecIDDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServiceRecIDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.ServiceRecIDDataGridViewTextBoxColumn.Visible = False
-        '
-        'PatientNameDataGridViewTextBoxColumn
-        '
-        Me.PatientNameDataGridViewTextBoxColumn.DataPropertyName = "PatientName"
-        Me.PatientNameDataGridViewTextBoxColumn.HeaderText = "Patient Name"
-        Me.PatientNameDataGridViewTextBoxColumn.Name = "PatientNameDataGridViewTextBoxColumn"
-        Me.PatientNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PatientNameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.PatientNameDataGridViewTextBoxColumn.Width = 150
+        Me.PNameDataGridViewTextBoxColumn.DataPropertyName = "pName"
+        Me.PNameDataGridViewTextBoxColumn.Frozen = True
+        Me.PNameDataGridViewTextBoxColumn.HeaderText = "Patient Name"
+        Me.PNameDataGridViewTextBoxColumn.Name = "PNameDataGridViewTextBoxColumn"
+        Me.PNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PNameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.PNameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.PNameDataGridViewTextBoxColumn.Width = 160
         '
         'DentalServiceDataGridViewTextBoxColumn
         '
-        Me.DentalServiceDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DentalServiceDataGridViewTextBoxColumn.DataPropertyName = "DentalService"
-        Me.DentalServiceDataGridViewTextBoxColumn.HeaderText = "Dental Service"
+        Me.DentalServiceDataGridViewTextBoxColumn.DataPropertyName = "dentalService"
+        Me.DentalServiceDataGridViewTextBoxColumn.Frozen = True
+        Me.DentalServiceDataGridViewTextBoxColumn.HeaderText = "Service Type"
         Me.DentalServiceDataGridViewTextBoxColumn.Name = "DentalServiceDataGridViewTextBoxColumn"
         Me.DentalServiceDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DentalServiceDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DentalServiceDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.DentalServiceDataGridViewTextBoxColumn.Width = 125
         '
         'ServiceDateDataGridViewTextBoxColumn
         '
-        Me.ServiceDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ServiceDateDataGridViewTextBoxColumn.DataPropertyName = "ServiceDate"
-        Me.ServiceDateDataGridViewTextBoxColumn.HeaderText = "Date"
+        Me.ServiceDateDataGridViewTextBoxColumn.DataPropertyName = "serviceDate"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.ServiceDateDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
+        Me.ServiceDateDataGridViewTextBoxColumn.Frozen = True
+        Me.ServiceDateDataGridViewTextBoxColumn.HeaderText = "Service Date"
         Me.ServiceDateDataGridViewTextBoxColumn.Name = "ServiceDateDataGridViewTextBoxColumn"
         Me.ServiceDateDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServiceDateDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.ServiceDateDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.ServiceDateDataGridViewTextBoxColumn.Width = 111
+        '
+        'serviceTime
+        '
+        Me.serviceTime.DataPropertyName = "serviceTime"
+        Me.serviceTime.HeaderText = "Time"
+        Me.serviceTime.Name = "serviceTime"
+        Me.serviceTime.ReadOnly = True
+        Me.serviceTime.Visible = False
         '
         'ToothNumberDataGridViewTextBoxColumn
         '
-        Me.ToothNumberDataGridViewTextBoxColumn.DataPropertyName = "ToothNumber"
-        Me.ToothNumberDataGridViewTextBoxColumn.HeaderText = "ToothNumber"
+        Me.ToothNumberDataGridViewTextBoxColumn.DataPropertyName = "toothNumber"
+        Me.ToothNumberDataGridViewTextBoxColumn.HeaderText = "Tooth Number"
         Me.ToothNumberDataGridViewTextBoxColumn.Name = "ToothNumberDataGridViewTextBoxColumn"
         Me.ToothNumberDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ToothNumberDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.ToothNumberDataGridViewTextBoxColumn.Visible = False
         '
-        'MedsDataGridViewTextBoxColumn
+        'MedDataGridViewTextBoxColumn
         '
-        Me.MedsDataGridViewTextBoxColumn.DataPropertyName = "Meds"
-        Me.MedsDataGridViewTextBoxColumn.HeaderText = "Meds"
-        Me.MedsDataGridViewTextBoxColumn.Name = "MedsDataGridViewTextBoxColumn"
-        Me.MedsDataGridViewTextBoxColumn.ReadOnly = True
-        Me.MedsDataGridViewTextBoxColumn.Visible = False
+        Me.MedDataGridViewTextBoxColumn.DataPropertyName = "med"
+        Me.MedDataGridViewTextBoxColumn.HeaderText = "Med"
+        Me.MedDataGridViewTextBoxColumn.Name = "MedDataGridViewTextBoxColumn"
+        Me.MedDataGridViewTextBoxColumn.ReadOnly = True
+        Me.MedDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.MedDataGridViewTextBoxColumn.Visible = False
         '
         'ServiceAmountDataGridViewTextBoxColumn
         '
-        Me.ServiceAmountDataGridViewTextBoxColumn.DataPropertyName = "ServiceAmount"
-        Me.ServiceAmountDataGridViewTextBoxColumn.HeaderText = "ServiceAmount"
+        Me.ServiceAmountDataGridViewTextBoxColumn.DataPropertyName = "serviceAmount"
+        Me.ServiceAmountDataGridViewTextBoxColumn.HeaderText = "Amount"
         Me.ServiceAmountDataGridViewTextBoxColumn.Name = "ServiceAmountDataGridViewTextBoxColumn"
         Me.ServiceAmountDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServiceAmountDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.ServiceAmountDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.ServiceAmountDataGridViewTextBoxColumn.Visible = False
         '
-        'RemainingBalanceDataGridViewTextBoxColumn
+        'PBalanceDataGridViewTextBoxColumn
         '
-        Me.RemainingBalanceDataGridViewTextBoxColumn.DataPropertyName = "RemainingBalance"
-        DataGridViewCellStyle1.Format = "C2"
-        DataGridViewCellStyle1.NullValue = "0.00"
-        Me.RemainingBalanceDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
-        Me.RemainingBalanceDataGridViewTextBoxColumn.HeaderText = "RemainingBalance"
-        Me.RemainingBalanceDataGridViewTextBoxColumn.Name = "RemainingBalanceDataGridViewTextBoxColumn"
-        Me.RemainingBalanceDataGridViewTextBoxColumn.ReadOnly = True
-        Me.RemainingBalanceDataGridViewTextBoxColumn.Visible = False
+        Me.PBalanceDataGridViewTextBoxColumn.DataPropertyName = "pBalance"
+        Me.PBalanceDataGridViewTextBoxColumn.HeaderText = "Balance Left"
+        Me.PBalanceDataGridViewTextBoxColumn.Name = "PBalanceDataGridViewTextBoxColumn"
+        Me.PBalanceDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PBalanceDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.PBalanceDataGridViewTextBoxColumn.Visible = False
         '
-        'DentistDataGridViewTextBoxColumn
+        'PDentistDataGridViewTextBoxColumn
         '
-        Me.DentistDataGridViewTextBoxColumn.DataPropertyName = "Dentist"
-        Me.DentistDataGridViewTextBoxColumn.HeaderText = "Dentist"
-        Me.DentistDataGridViewTextBoxColumn.Name = "DentistDataGridViewTextBoxColumn"
-        Me.DentistDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DentistDataGridViewTextBoxColumn.Visible = False
+        Me.PDentistDataGridViewTextBoxColumn.DataPropertyName = "pDentist"
+        Me.PDentistDataGridViewTextBoxColumn.HeaderText = "Dentist"
+        Me.PDentistDataGridViewTextBoxColumn.Name = "PDentistDataGridViewTextBoxColumn"
+        Me.PDentistDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PDentistDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.PDentistDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.PDentistDataGridViewTextBoxColumn.Visible = False
         '
-        'AmountPaidDataGridViewTextBoxColumn
+        'pPaid
         '
-        Me.AmountPaidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.AmountPaidDataGridViewTextBoxColumn.DataPropertyName = "AmountPaid"
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = "0.00"
-        Me.AmountPaidDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
-        Me.AmountPaidDataGridViewTextBoxColumn.HeaderText = "Paid Amount"
-        Me.AmountPaidDataGridViewTextBoxColumn.Name = "AmountPaidDataGridViewTextBoxColumn"
-        Me.AmountPaidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.AmountPaidDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'ServiceTimeDataGridViewTextBoxColumn
-        '
-        Me.ServiceTimeDataGridViewTextBoxColumn.DataPropertyName = "ServiceTime"
-        Me.ServiceTimeDataGridViewTextBoxColumn.HeaderText = "ServiceTime"
-        Me.ServiceTimeDataGridViewTextBoxColumn.Name = "ServiceTimeDataGridViewTextBoxColumn"
-        Me.ServiceTimeDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServiceTimeDataGridViewTextBoxColumn.Visible = False
-        '
-        'PatientAddressDataGridViewTextBoxColumn
-        '
-        Me.PatientAddressDataGridViewTextBoxColumn.DataPropertyName = "PatientAddress"
-        Me.PatientAddressDataGridViewTextBoxColumn.HeaderText = "PatientAddress"
-        Me.PatientAddressDataGridViewTextBoxColumn.Name = "PatientAddressDataGridViewTextBoxColumn"
-        Me.PatientAddressDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PatientAddressDataGridViewTextBoxColumn.Visible = False
+        Me.pPaid.DataPropertyName = "pPaid"
+        Me.pPaid.HeaderText = "Paid Amount"
+        Me.pPaid.Name = "pPaid"
+        Me.pPaid.ReadOnly = True
+        Me.pPaid.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.pPaid.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'frmSummary
         '
@@ -407,8 +407,8 @@ Partial Class frmSummary
         Me.Text = "Summary"
         Me.gbSummary.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ServiceRecordDBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ToothImageDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ServiceRecordBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PLDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbSummaryTotal.ResumeLayout(False)
         Me.gbSummaryTotal.PerformLayout()
         Me.ToolStrip1.ResumeLayout(False)
@@ -424,6 +424,9 @@ Partial Class frmSummary
     Friend WithEvents lblSummaryTotal As System.Windows.Forms.Label
     Friend WithEvents lblSummaryIncome As System.Windows.Forms.Label
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents PLDBDataSet As ProjeckMilk.PLDBDataSet
+    Friend WithEvents ServiceRecordBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents ServiceRecordTableAdapter As ProjeckMilk.PLDBDataSetTableAdapters.serviceRecordTableAdapter
     Friend WithEvents btnSummaryAll As System.Windows.Forms.Button
     Friend WithEvents gbSummaryTotal As System.Windows.Forms.GroupBox
     Friend WithEvents lblSummaryNote As System.Windows.Forms.Label
@@ -437,19 +440,15 @@ Partial Class frmSummary
     Friend WithEvents PrintDocument1 As System.Drawing.Printing.PrintDocument
     Friend WithEvents PrintPreviewDialog1 As System.Windows.Forms.PrintPreviewDialog
     Friend WithEvents btnExportExcel As Button
-    Friend WithEvents ToothImageDBDataSet As ToothImageDBDataSet
-    Friend WithEvents ServiceRecordDBBindingSource As BindingSource
-    Friend WithEvents ServiceRecordDBTableAdapter As ToothImageDBDataSetTableAdapters.ServiceRecordDBTableAdapter
-    Friend WithEvents ServiceRecIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PatientNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DentalServiceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ServiceDateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents serviceTime As DataGridViewTextBoxColumn
     Friend WithEvents ToothNumberDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents MedsDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents MedDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ServiceAmountDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents RemainingBalanceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DentistDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents AmountPaidDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ServiceTimeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PatientAddressDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PBalanceDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PDentistDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents pPaid As DataGridViewTextBoxColumn
 End Class
